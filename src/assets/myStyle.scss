@@ -1,0 +1,34 @@
+.box {
+	border: 3px dashed orange;
+	padding: 10px;
+
+	&-result {
+		border: 1px dashed #aaa;
+		padding: 5px 8px;
+	}
+}
+
+.desc {
+	color: blue;
+}
+
+.d-block {
+	display: block;
+}
+
+.text-bold {
+	font-weight: bold;
+}
+
+
+$spacer: 0, 4, 8, 12, 16, 20, 24, 28, 32, 36;
+
+@each $val in $spacer {
+	.mb-#{$val} {
+		margin-bottom: #{$val}px;
+	}
+
+	.mt-#{$val} {
+		margin-top: #{$val}px;
+	}
+}

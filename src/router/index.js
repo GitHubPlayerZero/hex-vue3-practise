@@ -1,8 +1,11 @@
-import { createRouter, createWebHistory } from 'vue-router';
+/* eslint-disable no-unused-vars */
+import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
+import PracticeSample from '@/views/PracticeSample.vue';
 
 const router = createRouter({
-    history: createWebHistory(import.meta.env.BASE_URL),
+    // history: createWebHistory(import.meta.env.BASE_URL),
+    history: createWebHashHistory(import.meta.env.BASE_URL),
     routes: [
         {
             path: '/',
@@ -10,13 +13,33 @@ const router = createRouter({
             component: HomeView,
         },
         {
-            path: '/about',
+			path: '/about',
             name: 'about',
             // route level code-splitting
             // this generates a separate chunk (About.[hash].js) for this route
             // which is lazy-loaded when the route is visited.
             component: () => import('../views/AboutView.vue'),
         },
+		{
+			path: '/samples',
+			name: 'samples',
+			component: PracticeSample,
+			children: [
+				{
+					path: '',
+					name: 'sample-init-load',
+					component: () => import('../views/samples/AddNum.vue'),
+				},
+				{
+					path: 'addnum',
+					component: () => import('../views/samples/AddNum.vue'),
+				},
+				{
+					path: 'vmodel',
+					component: () => import('../views/samples/VModel.vue'),
+				},
+			]
+		},
     ],
 });
 

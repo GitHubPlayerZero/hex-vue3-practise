@@ -1,1 +1,0 @@
-import{r as n,c as o,a as e,b as s,t as c,F as l,o as r}from"./index-B4Kwqbk9.js";const u=e("h2",null,"開場示範 - 累加",-1),m={__name:"AddNum",setup(_){const t=n(0);function a(){t.value+=3}return(d,i)=>(r(),o(l,null,[u,e("div",null,[s(c(t.value)+" ",1),e("input",{type:"button",onClick:a,value:"+3"})])],64))}};export{m as default};

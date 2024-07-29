@@ -15,6 +15,7 @@ import HelloWorld from './components/HelloWorld.vue';
                 <RouterLink to="/">Home</RouterLink>
                 <RouterLink to="/about">About</RouterLink>
                 <RouterLink to="/samples">練習範例</RouterLink>
+                <RouterLink to="/dayjobs">每日任務</RouterLink>
             </nav>
         </div>
     </header>
@@ -22,7 +23,7 @@ import HelloWorld from './components/HelloWorld.vue';
     <RouterView />
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 header {
     line-height: 1.5;
     max-height: 100vh;
@@ -60,7 +61,7 @@ nav a:first-of-type {
 
 @media (min-width: 1024px) {
     header {
-        display: flex;
+        // display: flex;
         place-items: center;
         padding-right: calc(var(--section-gap) / 2);
     }

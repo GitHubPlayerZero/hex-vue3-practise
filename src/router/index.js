@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
-import PracticeSample from '@/views/PracticeSample.vue';
+import PracticeSamples from '@/views/samples/PracticeSamples.vue';
 
 const router = createRouter({
     // history: createWebHistory(import.meta.env.BASE_URL),
@@ -23,7 +23,7 @@ const router = createRouter({
 		{
 			path: '/samples',
 			name: 'samples',
-			component: PracticeSample,
+			component: PracticeSamples,
 			children: [
 				{
 					path: '',
@@ -40,6 +40,17 @@ const router = createRouter({
 				},
 			]
 		},
+        {
+            path: '/dayjobs',
+            name: 'dayjobs',
+            component: () => import('../views/day_jobs/DayJobs.vue'),
+            children: [
+                {
+                    path: 'day1',
+                    component: () => import('../views/day_jobs/DayJob1.vue'),
+                },
+            ],
+        },
     ],
 });
 

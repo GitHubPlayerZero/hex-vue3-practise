@@ -8,8 +8,19 @@
     }
 }
 
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .desc {
     color: blue;
+}
+
+.hr {
+    border-width: 2px;
+    border-style: dashed;
+    border-color: #0af;
 }
 
 .d-block {
@@ -21,14 +32,32 @@
 }
 
 // 產出間距
-$spacer: 0, 4, 8, 12, 16, 20, 24, 28, 32, 36;
+$spacer: 0, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60;
 
 @each $val in $spacer {
+    .mt-#{$val} {
+        margin-top: #{$val}px;
+    }
+    .mr-#{$val} {
+        margin-right: #{$val}px;
+    }
     .mb-#{$val} {
         margin-bottom: #{$val}px;
     }
-
-    .mt-#{$val} {
-        margin-top: #{$val}px;
+    .ml-#{$val} {
+        margin-left: #{$val}px;
+    }
+    
+    .pt-#{$val} {
+        padding-top: #{$val}px;
+    }
+    .pr-#{$val} {
+        padding-right: #{$val}px;
+    }
+    .pb-#{$val} {
+        padding-bottom: #{$val}px;
+    }
+    .pl-#{$val} {
+        padding-left: #{$val}px;
     }
 }

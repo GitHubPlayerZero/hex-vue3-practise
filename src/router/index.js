@@ -38,6 +38,10 @@ const router = createRouter({
 					path: 'vmodel',
 					component: () => import('../views/samples/VModel.vue'),
 				},
+				{
+					path: 'vbind',
+					component: () => import('../views/samples/VBind.vue'),
+				},
 			]
 		},
         {

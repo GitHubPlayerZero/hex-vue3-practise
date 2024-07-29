@@ -1,7 +1,8 @@
 <template>
     <h2>🏅 Day1 - Vue.js 的基礎魔法：v-text、v-html、v-once</h2>
     <p>
-        <a href="https://hackmd.io/67i9ck20QjW5iHL0CexPyQ?view" target="_blank"> 題目 </a>｜
+        <a href="https://hackmd.io/67i9ck20QjW5iHL0CexPyQ?view" target="_blank">題目</a>｜
+        <a href="https://github.com/GitHubPlayerZero/hex-vue3-practise/blob/main/src/views/day_jobs/DayJob1.vue" target="_blank">Code</a>｜
         <a href="https://codepen.io/codepenplayer/pen/YzopbXP" target="_blank">CodePen</a>
     </p>
     
@@ -50,7 +51,6 @@
 
 <script setup>
 import { ref } from 'vue';
-console.clear();
 
 const RayMoney = ref(1500);
 const lunchPrice = ref(90);

@@ -8,6 +8,7 @@
     <nav class="mb-24">
         <RouterLink to="/samples/addnum">開場示範 - 累加</RouterLink> |
         <RouterLink to="/samples/vmodel">v-model</RouterLink> |
+        <RouterLink to="/samples/vbind">v-bind</RouterLink> |
     </nav>
 
     <hr />

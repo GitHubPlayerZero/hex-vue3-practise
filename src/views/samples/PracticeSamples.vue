@@ -11,7 +11,7 @@
         <RouterLink to="/samples/vbind">v-bind</RouterLink> |
     </nav>
 
-    <hr />
+    <hr style="border: 3px solid pink; box-shadow: 2px 2px 3px orchid" />
 
     <RouterView />
 </template>

@@ -1,6 +1,6 @@
 <template>
     <h2>v-bind</h2>
-    <p class="mb-28"><a href="" target="_blank">Code</a></p>
+    <p class="mb-28"><a href="https://github.com/GitHubPlayerZero/hex-vue3-practise/blob/main/src/views/samples/VBind.vue" target="_blank">Code</a></p>
 
     <hr class="hr" />
 

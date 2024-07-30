@@ -6,7 +6,7 @@
         <a href="https://codepen.io/codepenplayer/pen/YzopbXP" target="_blank">CodePen</a>
     </p>
     
-    <br>
+    <hr />
 
     <div id="app">
         <fieldset>

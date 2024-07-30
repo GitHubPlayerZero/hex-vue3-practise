@@ -53,6 +53,42 @@ const router = createRouter({
                     path: 'day1',
                     component: () => import('../views/day_jobs/DayJob1.vue'),
                 },
+                {
+                    path: 'day2',
+                    component: () => import('../views/day_jobs/DayJob2.vue'),
+                },
+                // {
+                //     path: 'day3',
+                //     component: () => import('../views/day_jobs/DayJob3.vue'),
+                // },
+                // {
+                //     path: 'day4',
+                //     component: () => import('../views/day_jobs/DayJob4.vue'),
+                // },
+                // {
+                //     path: 'day5',
+                //     component: () => import('../views/day_jobs/DayJob5.vue'),
+                // },
+                // {
+                //     path: 'day6',
+                //     component: () => import('../views/day_jobs/DayJob6.vue'),
+                // },
+                // {
+                //     path: 'day7',
+                //     component: () => import('../views/day_jobs/DayJob7.vue'),
+                // },
+                // {
+                //     path: 'day8',
+                //     component: () => import('../views/day_jobs/DayJob8.vue'),
+                // },
+                // {
+                //     path: 'day9',
+                //     component: () => import('../views/day_jobs/DayJob9.vue'),
+                // },
+                // {
+                //     path: 'day10',
+                //     component: () => import('../views/day_jobs/DayJob10.vue'),
+                // },
             ],
         },
     ],

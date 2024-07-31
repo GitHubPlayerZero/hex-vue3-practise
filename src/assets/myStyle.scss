@@ -8,6 +8,15 @@
     }
 }
 
+.fieldset {
+    border: 3px dashed #3355ff;
+    padding: 15px;
+    
+    legend {
+        padding: 0 5px;
+    }
+}
+
 .flex {
     display: flex;
     flex-wrap: wrap;

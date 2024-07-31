@@ -6,8 +6,8 @@
     <nav class="mb-24">
         <RouterLink to="/dayjobs/day1">Day1</RouterLink> |
         <RouterLink to="/dayjobs/day2">Day2</RouterLink> |
-        <!-- <RouterLink to="/dayjobs/day3">Day3</RouterLink> |
-        <RouterLink to="/dayjobs/day4">Day4</RouterLink> |
+        <RouterLink to="/dayjobs/day3">Day3</RouterLink> |
+        <!-- <RouterLink to="/dayjobs/day4">Day4</RouterLink> |
         <RouterLink to="/dayjobs/day5">Day5</RouterLink> |
         <RouterLink to="/dayjobs/day6">Day6</RouterLink> |
         <RouterLink to="/dayjobs/day7">Day7</RouterLink> |

@@ -26,6 +26,8 @@ const radio2 = ref('台中市');
     <h2>v-model 雙向綁定</h2>
 	<p class="mb-28"><a href="https://github.com/GitHubPlayerZero/hex-vue3-practise/blob/main/src/views/samples/VModel.vue" target="_blank">Code</a></p>
     
+    <hr class="hr" />
+    
     <p>常用在表單元素上。</p>
 
     <!-- 輸入框 -->

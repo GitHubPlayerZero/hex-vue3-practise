@@ -9,6 +9,7 @@
         <RouterLink to="/samples/addnum">開場示範 - 累加</RouterLink> |
         <RouterLink to="/samples/vmodel">v-model</RouterLink> |
         <RouterLink to="/samples/vbind">v-bind</RouterLink> |
+        <RouterLink to="/samples/von">v-on</RouterLink> |
     </nav>
 
     <hr style="border: 3px solid pink; box-shadow: 2px 2px 3px orchid" />

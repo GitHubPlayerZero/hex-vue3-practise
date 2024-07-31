@@ -66,7 +66,7 @@ function changeLunchPrice() {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 body {
     padding: 0 15px 10px;
 }

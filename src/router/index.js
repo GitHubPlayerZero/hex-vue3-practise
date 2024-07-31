@@ -42,6 +42,10 @@ const router = createRouter({
 					path: 'vbind',
 					component: () => import('../views/samples/VBind.vue'),
 				},
+				{
+					path: 'von',
+					component: () => import('../views/samples/VOn.vue'),
+				},
 			]
 		},
         {
@@ -57,10 +61,10 @@ const router = createRouter({
                     path: 'day2',
                     component: () => import('../views/day_jobs/DayJob2.vue'),
                 },
-                // {
-                //     path: 'day3',
-                //     component: () => import('../views/day_jobs/DayJob3.vue'),
-                // },
+                {
+                    path: 'day3',
+                    component: () => import('../views/day_jobs/DayJob3.vue'),
+                },
                 // {
                 //     path: 'day4',
                 //     component: () => import('../views/day_jobs/DayJob4.vue'),

@@ -1,72 +1,72 @@
 .box {
-    border: 3px dashed orange;
-    padding: 10px;
+	border: 3px dashed orange;
+	padding: 10px;
 
-    &-result {
-        border: 1px dashed #aaa;
-        padding: 5px 8px;
-    }
+	&-result {
+		border: 1px dashed #aaa;
+		padding: 5px 8px;
+	}
 }
 
 .fieldset {
-    border: 3px dashed #3355ff;
-    padding: 15px;
-    
-    legend {
-        padding: 0 5px;
-    }
+	border: 3px dashed #3355ff;
+	padding: 15px;
+
+	legend {
+		padding: 0 5px;
+	}
 }
 
 .flex {
-    display: flex;
-    flex-wrap: wrap;
+	display: flex;
+	flex-wrap: wrap;
 }
 
 .desc {
-    color: blue;
+	color: blue;
 }
 
 .hr {
-    border-width: 2px;
-    border-style: dashed;
-    border-color: #0af;
+	border-width: 2px;
+	border-style: dashed;
+	border-color: #0af;
 }
 
 .d-block {
-    display: block;
+	display: block;
 }
 
 .text-bold {
-    font-weight: bold;
+	font-weight: bold;
 }
 
 // 產出間距
 $spacer: 0, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60;
 
 @each $val in $spacer {
-    .mt-#{$val} {
-        margin-top: #{$val}px;
-    }
-    .mr-#{$val} {
-        margin-right: #{$val}px;
-    }
-    .mb-#{$val} {
-        margin-bottom: #{$val}px;
-    }
-    .ml-#{$val} {
-        margin-left: #{$val}px;
-    }
-    
-    .pt-#{$val} {
-        padding-top: #{$val}px;
-    }
-    .pr-#{$val} {
-        padding-right: #{$val}px;
-    }
-    .pb-#{$val} {
-        padding-bottom: #{$val}px;
-    }
-    .pl-#{$val} {
-        padding-left: #{$val}px;
-    }
+	.mt-#{$val} {
+		margin-top: #{$val}px;
+	}
+	.mr-#{$val} {
+		margin-right: #{$val}px;
+	}
+	.mb-#{$val} {
+		margin-bottom: #{$val}px;
+	}
+	.ml-#{$val} {
+		margin-left: #{$val}px;
+	}
+
+	.pt-#{$val} {
+		padding-top: #{$val}px;
+	}
+	.pr-#{$val} {
+		padding-right: #{$val}px;
+	}
+	.pb-#{$val} {
+		padding-bottom: #{$val}px;
+	}
+	.pl-#{$val} {
+		padding-left: #{$val}px;
+	}
 }

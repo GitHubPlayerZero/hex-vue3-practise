@@ -8,7 +8,7 @@ function add() {
 </script>
 
 <template>
-	<h2>開場示範 - 累加</h2>
+	<h1 class="h1">開場示範 - 累加</h1>
 	<p>
 		<a
 			href="https://github.com/GitHubPlayerZero/hex-vue3-practise/blob/main/src/views/samples/AddNum.vue"
@@ -17,7 +17,7 @@ function add() {
 		>
 	</p>
 
-	<br />
+	<hr class="hr mt-0" />
 
 	<div>
 		{{ num }}

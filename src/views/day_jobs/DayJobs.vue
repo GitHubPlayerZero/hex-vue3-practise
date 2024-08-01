@@ -1,8 +1,6 @@
 <script setup></script>
 
 <template>
-	<h1>2024 Vue 前端新手營 每日任務</h1>
-
 	<nav class="mb-24">
 		<RouterLink to="/dayjobs/day1">Day1</RouterLink> |
 		<RouterLink to="/dayjobs/day2">Day2</RouterLink> |

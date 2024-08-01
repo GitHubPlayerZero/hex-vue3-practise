@@ -1,6 +1,6 @@
 <template>
-	<h2>v-bind</h2>
-	<p class="mb-28">
+	<h1 class="h1">v-bind</h1>
+	<p>
 		<a
 			href="https://github.com/GitHubPlayerZero/hex-vue3-practise/blob/main/src/views/samples/VBind.vue"
 			target="_blank"
@@ -8,11 +8,11 @@
 		>
 	</p>
 
-	<hr class="hr" />
+	<hr class="hr mt-0" />
 
-	<h3>綁定屬性</h3>
+	<h2 class="h2">綁定屬性</h2>
 
-	<fieldset class="box mb-24">
+	<fieldset class="fieldset mb-32">
 		<legend>範例 1</legend>
 
 		<div style="display: flex; flex-wrap: wrap; gap: 30px">
@@ -33,7 +33,7 @@
 		</div>
 	</fieldset>
 
-	<fieldset class="box mb-24">
+	<fieldset class="fieldset mb-24">
 		<legend>範例 2</legend>
 
 		<label>
@@ -44,16 +44,16 @@
 		<input type="text" :disabled="isDisabled" />
 	</fieldset>
 
-	<hr class="hr mt-36 mb-36" />
+	<hr class="hr" />
 
-	<h3>綁定行內樣式 (style)</h3>
+	<h2 class="h2">綁定行內樣式 (style)</h2>
 
-	<fieldset class="box mb-40 pl-28 pb-28">
-		<legend class="mb-24">一般 HTML 寫法</legend>
+	<fieldset class="fieldset mb-40 pl-28 pb-28">
+		<legend class="mb-16">一般 HTML 寫法</legend>
 		<div class="box-sample" style="background-color: green; transform: rotate(45deg)"></div>
 	</fieldset>
 
-	<fieldset class="box mb-40 pl-28 pb-28">
+	<fieldset class="fieldset mb-40 pl-28 pb-28">
 		<legend>使用 v-bind (物件寫法)</legend>
 
 		<ul class="mb-32">
@@ -67,8 +67,8 @@
 		></div>
 	</fieldset>
 
-	<fieldset class="box mb-40 pl-28 pb-28">
-		<legend class="mb-8">搭配三元運算子判斷</legend>
+	<fieldset class="fieldset mb-40 pl-28 pb-28">
+		<legend>搭配三元運算子判斷</legend>
 
 		<div class="mb-32">
 			<label> <input type="checkbox" v-model="isRotate" />&nbsp; 旋轉 </label>
@@ -87,20 +87,20 @@
 		</div>
 	</fieldset>
 
-	<fieldset class="box mb-40 pl-28 pb-28">
-		<legend class="mb-24">陣列寫法</legend>
+	<fieldset class="fieldset mb-40 pl-28 pb-28">
+		<legend class="mb-16">陣列寫法</legend>
 		<div
 			class="box-sample"
 			v-bind:style="[{ backgroundColor: 'green' }, { transform: 'rotate(45deg)' }]"
 		></div>
 	</fieldset>
 
-	<hr class="hr mt-36 mb-36" />
+	<hr class="hr" />
 
-	<h2>綁定 class</h2>
+	<h2 class="h2">綁定 class</h2>
 
-	<fieldset class="box mb-40 pl-28 pb-28">
-		<legend class="mb-8">物件寫法</legend>
+	<fieldset class="fieldset mb-40 pl-28 pb-28">
+		<legend>物件寫法</legend>
 
 		<div class="mb-32">
 			<label><input type="checkbox" v-model="isRotate2" /> 旋轉</label
@@ -111,8 +111,8 @@
 		<div :class="{ 'box-sample': true, rotate: isRotate2, 'bg-green': isChangeColor2 }"></div>
 	</fieldset>
 
-	<fieldset class="box mb-40 pl-28 pb-28">
-		<legend class="mb-24">陣列寫法</legend>
+	<fieldset class="fieldset mb-40 pl-28 pb-28">
+		<legend class="mb-16">陣列寫法</legend>
 		<div :class="['box-sample', 'rotate', 'bg-green']"></div>
 	</fieldset>
 </template>

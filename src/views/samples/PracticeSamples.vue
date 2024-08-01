@@ -1,7 +1,6 @@
 <script setup></script>
 
 <template>
-	<h1>練習範例</h1>
 	<!-- https://github.com/GitHubPlayerZero/hex-vue3-practise/tree/main/src/views/samples -->
 	<!-- https://githubplayerzero.github.io/hex-vue3-practise/#/samples -->
 

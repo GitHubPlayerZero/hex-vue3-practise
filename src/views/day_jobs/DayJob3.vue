@@ -1,5 +1,5 @@
 <template>
-	<h2>🏅Day3 - Vue.js 的基礎魔法：v-model 表單運用</h2>
+	<h1 class="h1">🏅Day3 - Vue.js 的基礎魔法：v-model 表單運用</h1>
 	<p>
 		<a href="https://hackmd.io/FKzZqZ3IT4SR_KAds4ivpw" target="_blank">題目</a>｜
 		<a
@@ -10,13 +10,13 @@
 		<a href="https://codepen.io/codepenplayer/pen/GRbrbYd" target="_blank">CodePen</a>
 	</p>
 
-	<hr />
+	<hr class="hr mt-0" />
 
 	<div id="app">
 		<div class="container">
 			<!-- Q1 -->
 			<div class="Q1">
-				<h2 class="mb-24">Q1</h2>
+				<h2 class="h2">Q1</h2>
 
 				<form class="box mb-20">
 					<div v-for="fruit in fruitData" :key="fruit.title" class="form-check">
@@ -39,11 +39,11 @@
 				</div>
 			</div>
 
-			<hr class="hr mt-32 mb-32" />
+			<hr class="hr" />
 
 			<!-- Q2 -->
 			<div class="Q2">
-				<h2 class="mb-24">Q2</h2>
+				<h2 class="h2">Q2</h2>
 
 				<select class="form-select mb-20" v-model="selected">
 					<option value="" disabled>--- 請選擇 ---</option>
@@ -95,19 +95,16 @@ const fruitData = ref([
 </script>
 
 <style lang="scss" scoped>
-@import url('https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css');
-
-body {
-	padding: 20px 15px 40px;
-}
 .container {
 	max-width: 600px;
 	margin-top: 50px;
 }
+
 .form-check {
 	display: flex;
 	align-items: center;
 }
+
 .form-check-label {
 	margin-left: 0.5rem;
 }

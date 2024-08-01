@@ -1,11 +1,26 @@
+@import 'bootstrap/dist/css/bootstrap';
+
+.h1, .h2 {
+	margin-bottom: 20px;
+}
+.h3 {
+	margin-bottom: 16px;
+}
+
+.link-active {
+	background-color: #aff;
+	color: red;
+	font-weight: bold;
+}
+
 .box {
 	border: 3px dashed orange;
 	padding: 10px;
+}
 
-	&-result {
-		border: 1px dashed #aaa;
-		padding: 5px 8px;
-	}
+.result {
+	border: 1px dashed #aaa;
+	padding: 5px 8px;
 }
 
 .fieldset {
@@ -13,7 +28,11 @@
 	padding: 15px;
 
 	legend {
+		float: none;
+		width: auto;
 		padding: 0 5px;
+		margin-bottom: 0;
+		font-size: 20px;
 	}
 }
 
@@ -27,13 +46,11 @@
 }
 
 .hr {
-	border-width: 2px;
+	border-width: 2.5px;
 	border-style: dashed;
-	border-color: #0af;
-}
-
-.d-block {
-	display: block;
+	// border-color: #0af;
+	border-color: #555;
+	margin: 36px 0;
 }
 
 .text-bold {
@@ -45,28 +62,28 @@ $spacer: 0, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60;
 
 @each $val in $spacer {
 	.mt-#{$val} {
-		margin-top: #{$val}px;
+		margin-top: #{$val}px !important;
 	}
 	.mr-#{$val} {
-		margin-right: #{$val}px;
+		margin-right: #{$val}px !important;
 	}
 	.mb-#{$val} {
-		margin-bottom: #{$val}px;
+		margin-bottom: #{$val}px !important;
 	}
 	.ml-#{$val} {
-		margin-left: #{$val}px;
+		margin-left: #{$val}px !important;
 	}
 
 	.pt-#{$val} {
-		padding-top: #{$val}px;
+		padding-top: #{$val}px !important;
 	}
 	.pr-#{$val} {
-		padding-right: #{$val}px;
+		padding-right: #{$val}px !important;
 	}
 	.pb-#{$val} {
-		padding-bottom: #{$val}px;
+		padding-bottom: #{$val}px !important;
 	}
 	.pl-#{$val} {
-		padding-left: #{$val}px;
+		padding-left: #{$val}px !important;
 	}
 }

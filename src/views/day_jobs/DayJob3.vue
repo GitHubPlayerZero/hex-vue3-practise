@@ -1,5 +1,5 @@
 <template>
-	<h1 class="h1">🏅Day3 - Vue.js 的基礎魔法：v-model 表單運用</h1>
+	<h1 class="h1">🏅 Day3 - Vue.js 的基礎魔法：v-model 表單運用</h1>
 	<p>
 		<a href="https://hackmd.io/FKzZqZ3IT4SR_KAds4ivpw" target="_blank">題目</a>｜
 		<a

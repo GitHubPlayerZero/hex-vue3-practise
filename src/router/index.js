@@ -66,14 +66,14 @@ const router = createRouter({
 					path: 'day3',
 					component: () => import('../views/day_jobs/DayJob3.vue'),
 				},
-				// {
-				//     path: 'day4',
-				//     component: () => import('../views/day_jobs/DayJob4.vue'),
-				// },
-				// {
-				//     path: 'day5',
-				//     component: () => import('../views/day_jobs/DayJob5.vue'),
-				// },
+				{
+				    path: 'day4',
+				    component: () => import('../views/day_jobs/DayJob4.vue'),
+				},
+				{
+				    path: 'day5',
+				    component: () => import('../views/day_jobs/DayJob5.vue'),
+				},
 				// {
 				//     path: 'day6',
 				//     component: () => import('../views/day_jobs/DayJob6.vue'),

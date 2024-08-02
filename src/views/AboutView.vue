@@ -1,8 +1,6 @@
 <template>
-	<div class="about">
-		<h1>This is an about page</h1>
-	</div>
-
+	<h1 class="h1 mb-28">Bootstrap 測試</h1>
+	
 	<div class="accordion" id="accordionExample">
 		<div class="accordion-item">
 			<h2 class="accordion-header" id="headingOne">
@@ -96,14 +94,3 @@
 		</div>
 	</div>
 </template>
-
-<style lang="scss">
-
-@media (min-width: 1024px) {
-	.about {
-		min-height: 100vh;
-		display: flex;
-		align-items: center;
-	}
-}
-</style>

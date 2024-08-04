@@ -21,9 +21,9 @@
 								class="btn btn-outline-success"
 								@click="product.save"
 							>
-								完成</button
-							>&nbsp;&nbsp;&nbsp;
-
+								完成
+							</button>
+							&nbsp;&nbsp;&nbsp;
 							<button
 								type="button"
 								class="btn btn-outline-secondary"
@@ -62,9 +62,9 @@
 								class="btn btn-outline-danger"
 								@click="product.delete(item.id)"
 							>
-								刪除</button
-							>&nbsp;&nbsp;&nbsp;
-
+								刪除
+							</button>
+							&nbsp;&nbsp;&nbsp;
 							<button
 								type="button"
 								class="btn btn-outline-primary"
@@ -107,6 +107,7 @@
 				</tr>
 
 				<!-- 新增模式 -->
+				<!-- TODO 這部份與編輯模式重複，應做成元件共用 -->
 				<tr v-if="product.isAdd.value">
 					<!-- 功能區 -->
 					<td class="text-center">
@@ -251,7 +252,6 @@ const product = {
 	delete(id) {
 		if (confirm('確定要刪除此筆資料？')) {
 			const index = products.value.findIndex((item) => item.id === id);
-			console.log(`index ==>`, index);
 			products.value.splice(index, 1);
 		}
 	},

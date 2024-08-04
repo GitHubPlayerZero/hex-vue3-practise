@@ -12,11 +12,12 @@ import HelloWorld from './components/HelloWorld.vue';
 				<RouterLink to="/about">About</RouterLink>
 				<RouterLink to="/samples">練習範例</RouterLink>
 				<RouterLink to="/dayjobs">每日任務</RouterLink>
+				<RouterLink to="/homework">每週作業</RouterLink>
 			</nav>
 		</div>
 	</header>
 	
-	<hr style="border: 3px solid #f00">
+	<hr style="margin: 0 0 24px; border: 3px solid #f00">
 
 	<RouterView />
 </template>

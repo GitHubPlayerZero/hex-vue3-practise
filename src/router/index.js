@@ -21,6 +21,7 @@ const router = createRouter({
 			// which is lazy-loaded when the route is visited.
 			component: () => import('../views/AboutView.vue'),
 		},
+		// 練習範例
 		{
 			path: '/samples',
 			name: 'samples',
@@ -28,8 +29,8 @@ const router = createRouter({
 			children: [
 				{
 					path: '',
-					name: 'sample-init-load',
-					component: () => import('../views/samples/AddNum.vue'),
+					name: 'samples-default',
+					component: () => import('../views/samples/VOn.vue'),
 				},
 				{
 					path: 'addnum',
@@ -49,11 +50,17 @@ const router = createRouter({
 				},
 			],
 		},
+		// 每日任務
 		{
 			path: '/dayjobs',
 			name: 'dayjobs',
 			component: () => import('../views/day_jobs/DayJobs.vue'),
 			children: [
+				{
+					path: '',
+					name: 'dayjobs-default',
+					component: () => import('../views/day_jobs/DayJob5.vue'),
+				},
 				{
 					path: 'day1',
 					component: () => import('../views/day_jobs/DayJob1.vue'),
@@ -93,6 +100,75 @@ const router = createRouter({
 				// {
 				//     path: 'day10',
 				//     component: () => import('../views/day_jobs/DayJob10.vue'),
+				// },
+				// {
+				//     path: 'day11',
+				//     component: () => import('../views/day_jobs/DayJob11.vue'),
+				// },
+				// {
+				//     path: 'day12',
+				//     component: () => import('../views/day_jobs/DayJob12.vue'),
+				// },
+				// {
+				//     path: 'day13',
+				//     component: () => import('../views/day_jobs/DayJob13.vue'),
+				// },
+				// {
+				//     path: 'day14',
+				//     component: () => import('../views/day_jobs/DayJob14.vue'),
+				// },
+				// {
+				//     path: 'day15',
+				//     component: () => import('../views/day_jobs/DayJob15.vue'),
+				// },
+				// {
+				//     path: 'day16',
+				//     component: () => import('../views/day_jobs/DayJob16.vue'),
+				// },
+				// {
+				//     path: 'day17',
+				//     component: () => import('../views/day_jobs/DayJob17.vue'),
+				// },
+				// {
+				//     path: 'day18',
+				//     component: () => import('../views/day_jobs/DayJob18.vue'),
+				// },
+				// {
+				//     path: 'day19',
+				//     component: () => import('../views/day_jobs/DayJob19.vue'),
+				// },
+				// {
+				//     path: 'day20',
+				//     component: () => import('../views/day_jobs/DayJob20.vue'),
+				// },
+			],
+		},
+		// 每週作業
+		{
+			path: '/homework',
+			name: 'homework',
+			component: () => import('../views/homework/WorkCatalog.vue'),
+			children: [
+				{
+					path: '',
+					name: 'homework-default',
+					component: () => import('../views/homework/WorkWeek1.vue'),
+				},
+				{
+					path: 'week1',
+					component: () => import('../views/homework/WorkWeek1.vue'),
+				},
+				// {
+				// 	path: 'week2',
+				// 	component: () => import('../views/homework/WorkWeek2.vue'),
+				// },
+				// {
+				// 	path: 'week3',
+				// 	component: () => import('../views/homework/WorkWeek3.vue'),
+				// },
+				// {
+				// 	path: 'week4',
+				// 	component: () => import('../views/homework/WorkWeek4.vue'),
 				// },
 			],
 		},

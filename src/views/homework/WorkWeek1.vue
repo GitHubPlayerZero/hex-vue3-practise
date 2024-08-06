@@ -226,10 +226,9 @@ const products = ref([
 // 庫存
 const stock = {
 	reduce(item) {
-		if (item.stock <= 0) {
-			return;
+		if (item.stock > 0) {
+			item.stock--;
 		}
-		item.stock--;
 	},
 
 	add(item) {

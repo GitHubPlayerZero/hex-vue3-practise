@@ -59,7 +59,7 @@ const router = createRouter({
 				{
 					path: '',
 					name: 'dayjobs-default',
-					component: () => import('../views/day_jobs/DayJob5.vue'),
+					component: () => import('../views/day_jobs/DayJob7.vue'),
 				},
 				{
 					path: 'day1',
@@ -81,14 +81,14 @@ const router = createRouter({
 				    path: 'day5',
 				    component: () => import('../views/day_jobs/DayJob5.vue'),
 				},
-				// {
-				//     path: 'day6',
-				//     component: () => import('../views/day_jobs/DayJob6.vue'),
-				// },
-				// {
-				//     path: 'day7',
-				//     component: () => import('../views/day_jobs/DayJob7.vue'),
-				// },
+				{
+				    path: 'day6',
+				    component: () => import('../views/day_jobs/DayJob6.vue'),
+				},
+				{
+				    path: 'day7',
+				    component: () => import('../views/day_jobs/DayJob7.vue'),
+				},
 				// {
 				//     path: 'day8',
 				//     component: () => import('../views/day_jobs/DayJob8.vue'),

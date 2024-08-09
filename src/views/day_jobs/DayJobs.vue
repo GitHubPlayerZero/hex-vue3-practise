@@ -9,9 +9,9 @@
         <RouterLink to="/dayjobs/day5">Day5</RouterLink>｜
         <RouterLink to="/dayjobs/day6">Day6</RouterLink>｜
         <RouterLink to="/dayjobs/day7">Day7</RouterLink>｜
-        <!-- <RouterLink to="/dayjobs/day8">Day8</RouterLink>｜ -->
-        <!-- <RouterLink to="/dayjobs/day9">Day9</RouterLink>｜ -->
-        <!-- <RouterLink to="/dayjobs/day10">Day10</RouterLink>｜ -->
+        <RouterLink to="/dayjobs/day8">Day8</RouterLink>｜
+        <RouterLink to="/dayjobs/day9">Day9</RouterLink>｜
+        <RouterLink to="/dayjobs/day10">Day10</RouterLink>｜
         <!-- <RouterLink to="/dayjobs/day11">Day11</RouterLink>｜ -->
         <!-- <RouterLink to="/dayjobs/day12">Day12</RouterLink>｜ -->
         <!-- <RouterLink to="/dayjobs/day13">Day13</RouterLink>｜ -->

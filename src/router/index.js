@@ -21,6 +21,26 @@ const router = createRouter({
 			// which is lazy-loaded when the route is visited.
 			component: () => import('../views/AboutView.vue'),
 		},
+		{
+			path: '/bootstraptest',
+			component: () => import('../views/bootstrap/BootstrapTest.vue'),
+			children: [
+				{
+					path: '',
+					name: 'bootstraptest-default',
+					component: () => import('../views/bootstrap/BootstrapAccordion.vue'),
+				},
+				{
+					path: 'accordion',
+					component: () => import('../views/bootstrap/BootstrapAccordion.vue'),
+				},
+				{
+					path: 'toast',
+					component: () => import('../views/bootstrap/BootstrapToast.vue'),
+				},
+			],
+			
+		},
 		// 練習範例
 		{
 			path: '/samples',
@@ -59,7 +79,7 @@ const router = createRouter({
 				{
 					path: '',
 					name: 'dayjobs-default',
-					component: () => import('../views/day_jobs/DayJob7.vue'),
+					component: () => import('../views/day_jobs/DayJob10.vue'),
 				},
 				{
 					path: 'day1',
@@ -89,18 +109,18 @@ const router = createRouter({
 				    path: 'day7',
 				    component: () => import('../views/day_jobs/DayJob7.vue'),
 				},
-				// {
-				//     path: 'day8',
-				//     component: () => import('../views/day_jobs/DayJob8.vue'),
-				// },
-				// {
-				//     path: 'day9',
-				//     component: () => import('../views/day_jobs/DayJob9.vue'),
-				// },
-				// {
-				//     path: 'day10',
-				//     component: () => import('../views/day_jobs/DayJob10.vue'),
-				// },
+				{
+				    path: 'day8',
+				    component: () => import('../views/day_jobs/DayJob8.vue'),
+				},
+				{
+				    path: 'day9',
+				    component: () => import('../views/day_jobs/DayJob9.vue'),
+				},
+				{
+				    path: 'day10',
+				    component: () => import('../views/day_jobs/DayJob10.vue'),
+				},
 				// {
 				//     path: 'day11',
 				//     component: () => import('../views/day_jobs/DayJob11.vue'),

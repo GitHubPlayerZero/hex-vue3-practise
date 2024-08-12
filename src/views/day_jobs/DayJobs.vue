@@ -12,7 +12,7 @@
         <RouterLink to="/dayjobs/day8">Day8</RouterLink>｜
         <RouterLink to="/dayjobs/day9">Day9</RouterLink>｜
         <RouterLink to="/dayjobs/day10">Day10</RouterLink>｜
-        <!-- <RouterLink to="/dayjobs/day11">Day11</RouterLink>｜ -->
+        <RouterLink to="/dayjobs/day11">Day11</RouterLink>｜
         <!-- <RouterLink to="/dayjobs/day12">Day12</RouterLink>｜ -->
         <!-- <RouterLink to="/dayjobs/day13">Day13</RouterLink>｜ -->
         <!-- <RouterLink to="/dayjobs/day14">Day14</RouterLink>｜ -->

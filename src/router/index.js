@@ -68,6 +68,10 @@ const router = createRouter({
 					path: 'von',
 					component: () => import('../views/samples/VOn.vue'),
 				},
+				{
+					path: 'axios',
+					component: () => import('../views/samples/AxiosTest.vue'),
+				},
 			],
 		},
 		// 每日任務
@@ -121,10 +125,10 @@ const router = createRouter({
 				    path: 'day10',
 				    component: () => import('../views/day_jobs/DayJob10.vue'),
 				},
-				// {
-				//     path: 'day11',
-				//     component: () => import('../views/day_jobs/DayJob11.vue'),
-				// },
+				{
+				    path: 'day11',
+				    component: () => import('../views/day_jobs/DayJob11.vue'),
+				},
 				// {
 				//     path: 'day12',
 				//     component: () => import('../views/day_jobs/DayJob12.vue'),

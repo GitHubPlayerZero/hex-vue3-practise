@@ -3,7 +3,7 @@
 	<p>
 		<a href="https://hackmd.io/8DiAOsTxRTW9lvna-yiGqw" target="_blank">題目</a>｜
 		<a
-			href="https://github.com/GitHubPlayerZero/hex-vue3-practise/blob/main/src/views/day_jobs/DayJo10.vue"
+			href="https://github.com/GitHubPlayerZero/hex-vue3-practise/blob/main/src/views/day_jobs/DayJob10.vue"
 			target="_blank"
 			>Code</a
 		>｜

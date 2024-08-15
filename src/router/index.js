@@ -72,6 +72,10 @@ const router = createRouter({
 					path: 'axios',
 					component: () => import('../views/samples/AxiosTest.vue'),
 				},
+				{
+					path: 'cookie',
+					component: () => import('../views/samples/CookieTest.vue'),
+				},
 			],
 		},
 		// 每日任務
@@ -129,10 +133,10 @@ const router = createRouter({
 				    path: 'day11',
 				    component: () => import('../views/day_jobs/DayJob11.vue'),
 				},
-				// {
-				//     path: 'day12',
-				//     component: () => import('../views/day_jobs/DayJob12.vue'),
-				// },
+				{
+				    path: 'day12',
+				    component: () => import('../views/day_jobs/DayJob12/DayJob12.vue'),
+				},
 				// {
 				//     path: 'day13',
 				//     component: () => import('../views/day_jobs/DayJob13.vue'),
@@ -182,10 +186,10 @@ const router = createRouter({
 					path: 'week1',
 					component: () => import('../views/homework/WorkWeek1.vue'),
 				},
-				// {
-				// 	path: 'week2',
-				// 	component: () => import('../views/homework/WorkWeek2.vue'),
-				// },
+				{
+					path: 'week2',
+					component: () => import('../views/homework/WorkWeek2.vue'),
+				},
 				// {
 				// 	path: 'week3',
 				// 	component: () => import('../views/homework/WorkWeek3.vue'),

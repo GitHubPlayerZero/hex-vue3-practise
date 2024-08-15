@@ -10,6 +10,7 @@
 		<RouterLink to="/samples/vbind">v-bind</RouterLink>｜
 		<RouterLink to="/samples/von">v-on</RouterLink>｜
 		<RouterLink to="/samples/axios">axios</RouterLink>｜
+		<RouterLink to="/samples/cookie">cookie</RouterLink>｜
 	</nav>
 
 	<hr style="margin: 0 0 24px; border: 3px solid pink; box-shadow: 2px 2px 3px orchid" />

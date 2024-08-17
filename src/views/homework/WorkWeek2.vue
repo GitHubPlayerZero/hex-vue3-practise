@@ -357,7 +357,8 @@ const tokenCookie = {
 	},
 
 	remove() {
-		document.cookie = `hex_todo=; expires=Thu, 01 Jan 1970 00:00:00 GMT`;
+		// document.cookie = `hex_todo=; expires=Thu, 01 Jan 1970 00:00:00 GMT`;
+		document.cookie = `hex_todo=; max-age=0`;
 	},
 
 	addAndUpdate(val) {

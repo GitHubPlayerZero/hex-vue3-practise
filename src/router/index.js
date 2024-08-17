@@ -87,7 +87,7 @@ const router = createRouter({
 				{
 					path: '',
 					name: 'dayjobs-default',
-					component: () => import('../views/day_jobs/DayJob10.vue'),
+					component: () => import('../views/day_jobs/DayJob15/DayJob15.vue'),
 				},
 				{
 					path: 'day1',
@@ -137,18 +137,18 @@ const router = createRouter({
 				    path: 'day12',
 				    component: () => import('../views/day_jobs/DayJob12/DayJob12.vue'),
 				},
-				// {
-				//     path: 'day13',
-				//     component: () => import('../views/day_jobs/DayJob13.vue'),
-				// },
-				// {
-				//     path: 'day14',
-				//     component: () => import('../views/day_jobs/DayJob14.vue'),
-				// },
-				// {
-				//     path: 'day15',
-				//     component: () => import('../views/day_jobs/DayJob15.vue'),
-				// },
+				{
+				    path: 'day13',
+				    component: () => import('../views/day_jobs/DayJob13/DayJob13.vue'),
+				},
+				{
+				    path: 'day14',
+				    component: () => import('../views/day_jobs/DayJob14/DayJob14.vue'),
+				},
+				{
+				    path: 'day15',
+				    component: () => import('../views/day_jobs/DayJob15/DayJob15.vue'),
+				},
 				// {
 				//     path: 'day16',
 				//     component: () => import('../views/day_jobs/DayJob16.vue'),
@@ -190,10 +190,10 @@ const router = createRouter({
 					path: 'week2',
 					component: () => import('../views/homework/WorkWeek2.vue'),
 				},
-				// {
-				// 	path: 'week3',
-				// 	component: () => import('../views/homework/WorkWeek3.vue'),
-				// },
+				{
+					path: 'week3',
+					component: () => import('../views/homework/week3/WorkWeek3.vue'),
+				},
 				// {
 				// 	path: 'week4',
 				// 	component: () => import('../views/homework/WorkWeek4.vue'),

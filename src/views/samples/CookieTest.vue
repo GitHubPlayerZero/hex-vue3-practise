@@ -26,8 +26,14 @@
 		<button type="button" class="btn btn-outline-primary" @click="updateTest1">
 			更新 test1 期限為一分鐘
 		</button>
-		<button type="button" class="btn btn-outline-primary" @click="removeTest2">
+		<button type="button" class="btn btn-outline-primary" @click="removeCookie('test1')">
+			刪除 test1
+		</button>
+		<button type="button" class="btn btn-outline-primary" @click="removeCookie('test2')">
 			刪除 test2
+		</button>
+		<button type="button" class="btn btn-outline-primary" @click="removeCookie2('userName')">
+			刪除 userName
 		</button>
 	</div>
 </template>
@@ -73,11 +79,17 @@ function updateTest1() {
 	document.cookie = `test1=Hello; expires=${expirationDate.toUTCString()}`;
 }
 
-// 刪除 test2
+
+/* 刪除 cookie */
 // 設定一個過期的時間即失效
-function removeTest2() {
-	document.cookie = 'test2=; expires=Thu, 01 Jan 1970 00:00:00 GMT';
+function removeCookie(name) {
+	document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT`;
 }
+// max-age 設為 0 即失效
+function removeCookie2(name) {
+	document.cookie = `${name}=; max-age=0`;
+}
+
 </script>
 
 <style lang="scss" scoped></style>

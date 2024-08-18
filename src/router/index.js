@@ -76,6 +76,10 @@ const router = createRouter({
 					path: 'cookie',
 					component: () => import('../views/samples/CookieTest.vue'),
 				},
+				{
+					path: 'comtest1',
+					component: () => import('../views/samples/comTest1/ParentCom.vue'),
+				},
 			],
 		},
 		// 每日任務
@@ -180,7 +184,7 @@ const router = createRouter({
 				{
 					path: '',
 					name: 'homework-default',
-					component: () => import('../views/homework/WorkWeek1.vue'),
+					component: () => import('../views/homework/week3_2/WorkWeek3_2.vue'),
 				},
 				{
 					path: 'week1',
@@ -191,8 +195,16 @@ const router = createRouter({
 					component: () => import('../views/homework/WorkWeek2.vue'),
 				},
 				{
+					path: 'week3nocomp',
+					component: () => import('../views/homework/WorkWeek3NoComp.vue'),
+				},
+				{
 					path: 'week3',
 					component: () => import('../views/homework/week3/WorkWeek3.vue'),
+				},
+				{
+					path: 'week3-2',
+					component: () => import('../views/homework/week3_2/WorkWeek3_2.vue'),
 				},
 				// {
 				// 	path: 'week4',

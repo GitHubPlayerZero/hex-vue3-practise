@@ -7,6 +7,8 @@
 			>Code</a
 		>
 	</p>
+	
+	<hr class="hr mt-0">
 
 	<h2>基本測試</h2>
 

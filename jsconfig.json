@@ -2,7 +2,8 @@
   "compilerOptions": {
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+	// "checkJs": true
   },
   "exclude": ["node_modules", "dist"]
 }

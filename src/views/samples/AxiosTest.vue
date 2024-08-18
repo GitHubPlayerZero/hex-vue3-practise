@@ -7,6 +7,8 @@
 			>Code</a
 		>
 	</p>
+	
+	<hr class="hr mt-0">
 
 	<div class="container">
 		<!-- Card -->

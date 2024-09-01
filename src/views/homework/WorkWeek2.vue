@@ -390,15 +390,23 @@ const clipboard = (function () {
 	return { copy };
 })();
 
+function processError(error) {
+	const errorMsg = error.response?.data?.message ?? error.message;
+	return { fail: errorMsg };
+}
+
 
 /* 使用者 */
 const user = {
 	// 註冊
 	register: {
 		form: ref({
-			email: 'exam@gmail.com',
+			// email: 'exam@gmail.com',
+			// password: '123456',
+			// nickname: 'example',
+			email: 'aaa1@gmail.com',
+			nickname: 'ababab',
 			password: '123456',
-			nickname: 'example',
 		}),
 
 		result: ref({}),
@@ -414,7 +422,7 @@ const user = {
 				})
 				.catch((error) => {
 					console.error(error);
-					this.result.value = { fail: error.response.data.message };
+					this.result.value = processError(error);
 				});
 		},
 	},
@@ -422,7 +430,9 @@ const user = {
 	// 登入
 	login: {
 		form: ref({
-			email: 'exam@gmail.com',
+			// email: 'exam@gmail.com',
+			// password: '123456',
+			email: 'aaa1@gmail.com',
 			password: '123456',
 		}),
 
@@ -451,7 +461,7 @@ const user = {
 				})
 				.catch((error) => {
 					console.error(error);
-					this.result.value = { fail: error.response.data.message };
+					this.result.value = processError(error);
 				});
 		},
 	},
@@ -490,7 +500,7 @@ const user = {
 				})
 				.catch((error) => {
 					console.error(error);
-					this.result.value = { fail: error.response.data.message };
+					this.result.value = processError(error);
 				});
 		},
 	},
@@ -536,7 +546,7 @@ const user = {
 				})
 				.catch((error) => {
 					console.error(error);
-					this.result.value = { fail: error.response.data.message };
+					this.result.value = processError(error);
 				});
 		},
 	},
@@ -568,7 +578,7 @@ const todoList = {
 				})
 				.catch((error) => {
 					console.error(error);
-					this.result.value = { fail: error.response.data.message };
+					this.result.value = processError(error);
 				});
 		},
 	},
@@ -603,7 +613,7 @@ const todoList = {
 				})
 				.catch((error) => {
 					console.error(error);
-					this.result.value = { fail: error.response.data.message };
+					this.result.value = processError(error);
 				});
 		},
 	},
@@ -658,7 +668,7 @@ const todoList = {
 				})
 				.catch((error) => {
 					console.error(error);
-					this.result.value = { fail: error.response.data.message };
+					this.result.value = processError(error);
 				});
 		},
 	},
@@ -704,7 +714,7 @@ const todoList = {
 				})
 				.catch((error) => {
 					console.error(error);
-					this.result.value = { fail: error.response.data.message };
+					this.result.value = processError(error);
 				});
 		},
 	},
@@ -754,7 +764,7 @@ const todoList = {
 				})
 				.catch((error) => {
 					console.error(error);
-					this.result.value = { fail: error.response.data.message };
+					this.result.value = processError(error);
 				});
 		},
 	},

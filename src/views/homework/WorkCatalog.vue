@@ -7,7 +7,7 @@
 		<RouterLink to="/homework/week3nocomp">第 3 週作業 (沒有拆元件)</RouterLink>｜
 		<RouterLink to="/homework/week3">第 3 週作業 - 拆元件寫法 1</RouterLink>｜
 		<RouterLink to="/homework/week3-2">第 3 週作業 - 拆元件寫法 2</RouterLink>｜
-		<!-- <RouterLink to="/homework/week4">第 4 週作業</RouterLink>｜ -->
+		<RouterLink to="/homework/week4">第 4 週作業</RouterLink>｜
 	</nav>
 
 	<hr style="margin: 0 0 24px; border: 3px solid pink; box-shadow: 2px 2px 3px orchid" />

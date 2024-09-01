@@ -50,7 +50,7 @@ const router = createRouter({
 				{
 					path: '',
 					name: 'samples-default',
-					component: () => import('../views/samples/VOn.vue'),
+					component: () => import('../views/samples/state/Component1.vue'),
 				},
 				{
 					path: 'addnum',
@@ -79,6 +79,10 @@ const router = createRouter({
 				{
 					path: 'comtest1',
 					component: () => import('../views/samples/comTest1/ParentCom.vue'),
+				},
+				{
+					path: 'state',
+					component: () => import('../views/samples/state/Component1.vue'),
 				},
 			],
 		},
@@ -206,10 +210,10 @@ const router = createRouter({
 					path: 'week3-2',
 					component: () => import('../views/homework/week3_2/WorkWeek3_2.vue'),
 				},
-				// {
-				// 	path: 'week4',
-				// 	component: () => import('../views/homework/WorkWeek4.vue'),
-				// },
+				{
+					path: 'week4',
+					component: () => import('../views/homework/WorkWeek4.vue'),
+				},
 			],
 		},
 	],

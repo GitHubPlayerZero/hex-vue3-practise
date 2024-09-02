@@ -6,6 +6,9 @@
 	<p>
 		<a href="https://bootstrap5.hexschool.com/docs/5.1/components/accordion/" target="_blank">
 			Bootstrap 文件
+		</a>｜
+		<a href="https://github.com/GitHubPlayerZero/hex-vue3-practise/blob/main/src/views/kit_samples/bootstrap/Accordion.vue" target="_blank">
+			code
 		</a>
 	</p>
 	

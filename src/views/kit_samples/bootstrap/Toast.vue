@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <template>
 	<h1 class="h1">吐司訊息（Toast）</h1>
 	<p>

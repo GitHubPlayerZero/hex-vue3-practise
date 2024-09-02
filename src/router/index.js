@@ -21,26 +21,6 @@ const router = createRouter({
 			// which is lazy-loaded when the route is visited.
 			component: () => import('../views/AboutView.vue'),
 		},
-		{
-			path: '/bootstraptest',
-			component: () => import('../views/bootstrap/BootstrapTest.vue'),
-			children: [
-				{
-					path: '',
-					name: 'bootstraptest-default',
-					component: () => import('../views/bootstrap/BootstrapAccordion.vue'),
-				},
-				{
-					path: 'accordion',
-					component: () => import('../views/bootstrap/BootstrapAccordion.vue'),
-				},
-				{
-					path: 'toast',
-					component: () => import('../views/bootstrap/BootstrapToast.vue'),
-				},
-			],
-			
-		},
 		// 練習範例
 		{
 			path: '/samples',
@@ -85,6 +65,41 @@ const router = createRouter({
 					component: () => import('../views/samples/state/Component1.vue'),
 				},
 			],
+		},
+		{
+			path: '/kitSamples',
+			name: 'kitSamples',
+			component: () => import('@/views/kit_samples/KitSamples.vue'),
+			children: [
+				// {
+				// 	path: '',
+				// 	name: 'kitSamplesDefault',
+				// 	component: () => import('../views/kit_samples/bootstrap/BootstrapTest.vue')
+				// },
+				{
+					path: '/bootstrap',
+					name: 'bootstrap',
+					component: () => import('../views/kit_samples/bootstrap/BootstrapTest.vue'),
+					children: [
+						{
+							path: '',
+							name: 'bootstraptest-default',
+							component: () => import('../views/kit_samples/bootstrap/Accordion.vue'),
+						},
+						{
+							path: 'accordion',
+							name: 'bsAccordion',
+							component: () => import('../views/kit_samples/bootstrap/Accordion.vue'),
+						},
+						{
+							path: 'toast',
+							name: 'bsToast',
+							component: () => import('../views/kit_samples/bootstrap/Toast.vue'),
+						},
+					],
+					
+				},
+			]
 		},
 		// 每日任務
 		{

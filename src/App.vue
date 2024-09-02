@@ -10,8 +10,8 @@ import HelloWorld from './components/HelloWorld.vue';
 			<nav>
 				<RouterLink to="/">Home</RouterLink>
 				<RouterLink to="/about">About</RouterLink>
-				<RouterLink to="/bootstraptest">Bootstrap</RouterLink>
 				<RouterLink to="/samples">練習範例</RouterLink>
+				<RouterLink :to="{name: 'kitSamples'}">套件範例</RouterLink>
 				<RouterLink to="/dayjobs">每日任務</RouterLink>
 				<RouterLink to="/homework">每週作業</RouterLink>
 			</nav>

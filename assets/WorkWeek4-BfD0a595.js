@@ -1,0 +1,1 @@
+import{_ as t,b as o,o as a,F as r,d as e,e as s}from"./index-BVfeezz2.js";const c={},n=e("h2",null,"第四週作業",-1),_=e("p",null,[s("請至 "),e("a",{href:"https://github.com/GitHubPlayerZero/hex-vue3-week4",target:"_blank"},"這裡")],-1);function l(u,d){return a(),o(r,null,[n,_],64)}const f=t(c,[["render",l]]);export{f as default};

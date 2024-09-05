@@ -66,38 +66,61 @@ const router = createRouter({
 				},
 			],
 		},
+		// 套件範例
 		{
-			path: '/kitSamples',
+			path: '/kitsamples',
 			name: 'kitSamples',
-			component: () => import('@/views/kit_samples/KitSamples.vue'),
+			component: () => import('../views/kit_samples/KitSamples.vue'),
 			children: [
-				// {
-				// 	path: '',
-				// 	name: 'kitSamplesDefault',
-				// 	component: () => import('../views/kit_samples/bootstrap/BootstrapTest.vue')
-				// },
 				{
-					path: '/bootstrap',
+					path: '',
+					name: 'kitSamplesDefault',
+					component: () => import('../views/kit_samples/SweetAlert2.vue'),
+				},
+				{
+					path: 'bootstrap',
 					name: 'bootstrap',
 					component: () => import('../views/kit_samples/bootstrap/BootstrapTest.vue'),
 					children: [
 						{
 							path: '',
-							name: 'bootstraptest-default',
-							component: () => import('../views/kit_samples/bootstrap/Accordion.vue'),
+							name: 'bootstraptestDefault',
+							component: () => import('@/views/kit_samples/bootstrap/Accordion.vue'),
 						},
 						{
 							path: 'accordion',
 							name: 'bsAccordion',
-							component: () => import('../views/kit_samples/bootstrap/Accordion.vue'),
+							component: () => import('@/views/kit_samples/bootstrap/Accordion.vue'),
 						},
 						{
 							path: 'toast',
 							name: 'bsToast',
-							component: () => import('../views/kit_samples/bootstrap/Toast.vue'),
+							component: () => import('@/views/kit_samples/bootstrap/Toast.vue'),
 						},
 					],
 					
+				},
+				{
+					path: 'sweetalert2',
+					name: 'sweetalert2',
+					component: () => import('../views/kit_samples/SweetAlert2.vue'),
+				},
+				{
+					path: 'loading-overlay',
+					name: 'loadingOverlay',
+					component: () => import('@/views/kit_samples/loading_overlay/LoadingOverlaySample.vue'),
+					children: [
+						{
+							path: 'single-component',
+							name: 'loadingOverlaySingleComponent',
+							component: () => import('@/views/kit_samples/loading_overlay/LoadingOverlay.vue'),
+						},
+						{
+							path: 'global',
+							name: 'loadingOverlayGlobal',
+							component: () => import('@/views/kit_samples/loading_overlay/LoadingOverlayGlobal.vue'),
+						},
+					],
 				},
 			]
 		},
@@ -109,7 +132,7 @@ const router = createRouter({
 			children: [
 				{
 					path: '',
-					name: 'dayjobs-default',
+					name: 'dayjobsDefault',
 					component: () => import('../views/day_jobs/DayJob15/DayJob15.vue'),
 				},
 				{

@@ -157,9 +157,19 @@ function formSubmitWithSwal2(event)
 </script>
 
 <template>
-	<h2 class="h2">測試事件觸發</h2>
+	<h1 class="h1">測試事件觸發</h1>
 	
-	<h3 class="h3">基本 form 事件觸發</h3>
+	<p>
+		<a
+			href="https://github.com/GitHubPlayerZero/hex-vue3-practise/blob/main/src/views/samples/EventTest.vue"
+			target="_blank"
+			>Code</a
+		>
+	</p>
+	
+	<hr class="hr mt-0">
+	
+	<h2 class="h2">基本 form 事件觸發</h2>
 	
 	<p>連續按 Enter 得連續觸發 submit。</p>
 	
@@ -174,7 +184,7 @@ function formSubmitWithSwal2(event)
 	<hr class="my-5">
 	
 	
-	<h3 class="h3">form 事件觸發 loading</h3>
+	<h2 class="h2">form 事件觸發 loading</h2>
 	<p>測試之後才發現，vue-loading-overlay 竟然沒有防鍵盤操作！</p>
 	
 	<p>原本的 vue-loading-overlay，使用 Enter 觸發 submit，即使 loading 開啟了也還是可以繼續觸發。</p>
@@ -211,7 +221,7 @@ function formSubmitWithSwal2(event)
 	<hr class="my-5">
 	
 	
-	<h3 class="h3">form 事件觸發 alert</h3>
+	<h2 class="h2">form 事件觸發 alert</h2>
 	
 	<form action="javascript:alert('form action')" class="box" 
 		@keydown="formKeydown" @keypress="formKeypress" @keyup="formKeyup"
@@ -224,7 +234,7 @@ function formSubmitWithSwal2(event)
 	<hr class="my-5">
 	
 	
-	<h3 class="h3">form 事件觸發 SweetAlert2</h3>
+	<h2 class="h2">form 事件觸發 SweetAlert2</h2>
 	
 	<p>
 		由於 SWAL 預設一定會 focus 在某個 button 上，即使只有 confirm button 並且設定為 <code>focusConfirm: false,</code>，但仍然會 focus confirm button。<br>
@@ -245,7 +255,7 @@ function formSubmitWithSwal2(event)
 		雖然，我們相信大部份的使用者都不會故意這麼做。<br>
 		但一方面，為了避免真的有人惡意為之。<br>
 		另一方面，也是為了不想讓使用者太容易就能將訊息關閉，這會提升使用者忽略訊息的機率（根據經驗許多使用者不愛看訊息）。<br>
-		因此，可以將訊息窗設定為，只有真的手動點擊了按鈕才會關閉。
+		因此，可以將訊息窗設定為——只有真的手動點擊了按鈕才會關閉。
 	</p>
 	
 	<form action="javascript:alert('form action')" class="box" 

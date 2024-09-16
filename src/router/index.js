@@ -30,7 +30,7 @@ const router = createRouter({
 				{
 					path: '',
 					name: 'samples-default',
-					component: () => import('../views/samples/state/Component1.vue'),
+					component: () => import('../views/samples/EventTest.vue'),
 				},
 				{
 					path: 'addnum',
@@ -64,6 +64,11 @@ const router = createRouter({
 					path: 'state',
 					component: () => import('../views/samples/state/Component1.vue'),
 				},
+				{
+					path: 'event',
+					name: 'eventTest',
+					component: () => import('../views/samples/EventTest.vue'),
+				},
 			],
 		},
 		// 套件範例
@@ -74,7 +79,7 @@ const router = createRouter({
 			children: [
 				{
 					path: '',
-					name: 'kitSamplesDefault',
+					name: 'kitsamples-default',
 					component: () => import('../views/kit_samples/SweetAlert2.vue'),
 				},
 				{

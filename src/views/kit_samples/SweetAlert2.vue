@@ -429,7 +429,7 @@ function exeByDismissType()
 		position: 'top',
 		icon: 'success',
 		title: '註冊成功！',
-		html: '再 <b>5</b> 秒後將為您自動登入，若不想登入請點擊「離開」。',
+		html: '<b>5</b> 秒後將為您自動登入，若不想登入請點擊「離開」。',
 		timer: 5000,
 		timerProgressBar:true,
 		
@@ -519,6 +519,196 @@ function alertLifecycle()
 	
 	console.log(`[alertLifecycle] finish.`);
 }
+
+// willClose 之後的生命週期為異步
+async function testLifecycleAsync()
+{
+	console.log(`[testLifecycleAsync] function start...`);
+	
+	await Swal.fire({
+		title: '觀察生命週期的異步狀態',
+		... lifecycles("testLifecycleAsync"),
+	})
+	
+	setTimeout(() => {
+		console.log(`This is setTimeout 0!`);
+	}, 0);
+	
+	setTimeout(() => {
+		console.log(`This is setTimeout 240!`);
+	}, 240);
+	
+	setTimeout(() => {
+		console.log(`This is setTimeout 250!`);
+	}, 250);
+	
+	setTimeout(() => {
+		console.log(`This is setTimeout 260!`);
+	}, 260);
+	
+	setTimeout(() => {
+		console.log(`This is setTimeout 300!`);
+	}, 300);
+	
+	console.log(`[testLifecycleAsync] function end.`);
+}
+
+
+/* returnFocus */
+function testReturnFocus() {
+	Swal.fire("會自動 focus 觸發元素");
+}
+
+function testCloseReturnFocus() {
+	Swal.fire({
+		title: "取消 focus 觸發元素",
+		returnFocus: false,
+	});
+}
+
+async function testReturnFocusLifecycle()
+{
+	console.log(`[testReturnFocusLifecycle] function start...`);
+	
+	await Swal.fire({
+		title: "觀察 returnFocus 發生的時機",
+		... lifecycles("testReturnFocusLifecycle"),
+	});
+	
+	setTimeout(() => {
+		console.log(`This is setTimeout 0!`);
+	}, 0);
+	
+	setTimeout(() => {
+		console.log(`This is setTimeout 100!`);
+	}, 100);
+	
+	setTimeout(() => {
+		console.log(`This is setTimeout 250!`);
+	}, 250);
+	
+	setTimeout(() => {
+		console.log(`This is setTimeout 300!`);
+	}, 300);
+	
+	console.log(`[testReturnFocusLifecycle] function end.`);
+}
+
+
+/* 使用 focus 可能造成的奇怪情況 */
+// 測試 1
+const refText1 = ref(null);
+async function testFocus1()
+{
+	console.log(`[testFocus1] function start...`);
+	
+	await Swal.fire({
+		title: '請按下 Enter 關閉訊息窗',
+		text: '你會發現永遠都是被關了又自動打開...',
+		returnFocus: false,
+		... lifecycles("testFocus1"),
+	});
+	
+	console.log(`focus 輸入框!`);
+	refText1.value.focus();
+	
+	console.log(`[testFocus1] function end.`);
+}
+
+// 測試 2
+const refText2 = ref(null);
+async function testFocus2()
+{
+	console.log(`[testFocus2] function start...`);
+	
+	await Swal.fire({
+		title: '請按下 Enter 關閉訊息窗',
+		text: '只要是正常手速，就不會再次觸發訊息窗。',
+		returnFocus: false,
+		... lifecycles("testFocus2"),
+		
+		didDestroy: () => {
+			console.log(`[testFocus2] didDestroy...`);
+			console.log(`focus 輸入框!`);
+			refText2.value.focus();
+		}
+	});
+	
+	console.log(`[testFocus2] function end.`);
+}
+
+// 測試 3
+const refText3 = ref(null);
+async function testFocus3()
+{
+	console.log(`[testFocus3] function start...`);
+	
+	await Swal.fire({
+		title: '不支援 Enter 觸發 Confirm button',
+		text: '就是不讓你按 Enter 關閉，但如果使用 Tab 就...',
+		returnFocus: false,
+		... lifecycles("testFocus3"),
+		
+		didOpen (popup) {
+			console.log(popup);
+			popup.focus();
+		},
+		
+		didDestroy: () => {
+			console.log(`[testFocus3] didDestroy...`);
+			console.log(`focus 輸入框!`);
+			refText3.value.focus();
+		}
+	});
+	
+	console.log(`[testFocus3] function end.`);
+}
+
+// 測試 4
+const refText4 = ref(null);
+async function testFocus4()
+{
+	console.log(`[testFocus4] function start...`);
+	
+	await Swal.fire({
+		title: '改成 keyup 才觸發 button',
+		returnFocus: false,
+		... lifecycles("testFocus4"),
+		
+		didOpen (popup) {
+			const confirmBtn = popup.querySelector(".swal2-confirm");
+			// console.dir(confirmBtn);
+			// console.log(confirmBtn.click);
+			
+			// 禁止按下 Enter 鍵觸發 button
+			confirmBtn.addEventListener("keydown", (event) => {
+				console.log(event.key);
+				if (event.key === 'Enter') {
+					console.log(`prevent...`);
+					event.preventDefault();
+				}
+			});
+			
+			// 只在 Enter 鍵放開時觸發 button
+			confirmBtn.addEventListener("keyup", (event) => {
+				console.log(event.key);
+				if (event.key === 'Enter') {
+					console.log(`click...`);
+					confirmBtn.click();
+				}
+			});
+		},
+		
+		didDestroy: () => {
+			console.log(`[testFocus4] didDestroy...`);
+			console.log(`focus 輸入框!`);
+			refText4.value.focus();
+		}
+	});
+	
+	console.log(`[testFocus4] function end.`);
+}
+
 
 
 /* Loading */
@@ -1143,15 +1333,142 @@ function alertCustomLoadingMsg()
 	
 	<!-- SweetAlert2 的生命週期 -->
 	<h3 class="h3">SweetAlert2 的生命週期</h3>
-	
 	<ol>
 		<li>didRender → willOpen → 成為非同步 Promise 物件</li>
 		<li>觸發 didOpen</li>
 		<li>關閉時：willClose → didClose → didDestroy</li>
 	</ol>
 	
-	<div class="box d-flex flex-wrap gap-3 mb-52">
-		<button @click="alertLifecycle" class="btn btn-primary" type="button">顯示生命週期</button>
+	<div class="box mb-52">
+		
+		<div class="d-block mb-28">
+			<button @click="alertLifecycle" class="btn btn-primary" type="button">顯示生命週期</button>
+		</div>
+		
+		<p>
+			使用 async / await 讓 fire 成為同步執行，這時會發現關閉訊息窗的 didClose、didDestroy 生命週期為異步。<br>
+			這邊使用了多個 setTimeout 來約略測量生命週期何時執行，發現它們不只是異步，還而還稍有延遲，約 250 毫秒左右。
+		</p>
+		
+		<div class="d-block">
+			<button @click="testLifecycleAsync" class="btn btn-primary" type="button">willClose 之後的生命週期為異步</button>
+		</div>
+	</div>
+	
+	
+	<!-- returnFocus -->
+	<h2 class="h2">returnFocus</h2>
+	<p>
+		預設 true。<br>
+		在訊息窗關閉後會 focus 觸發訊息窗的元素。
+	</p>
+	
+	<div class="box mb-52">
+		<p>
+			預設情況，會自動 focus。<br>
+			註：不知為何有時會錯亂，focus 會跑到下面的 input text。
+		</p>
+		
+		<div class="d-block mb-28">
+			<label>
+				請按下 Enter：
+				<input type="text" @keyup.enter="testReturnFocus">
+			</label>
+		</div>
+		
+		<p>將 returnFocus 設為 false，就不會自動 focus。</p>
+		
+		<div class="d-block mb-28">
+			<label>
+				請按下 Enter：
+				<input type="text" @keyup.enter="testCloseReturnFocus">
+			</label>
+		</div>
+		
+		<p>觀察 returnFocus 發生的時機。</p>
+		
+		<div class="d-block mb-28">
+			<label>
+				請按下 Enter：
+				<input type="text" @keyup.enter="testReturnFocusLifecycle" @focus="console.log('focus!')">
+			</label>
+		</div>
+	</div>
+	
+	
+	<!-- 使用 focus 可能造成的奇怪情況 -->
+	<h2 class="h2">使用 focus 可能造成的奇怪情況</h2>
+	<p>有時，當按下按鈕後，依據執行結果，也可能需要 focus 輸入框，此時就必須手動設定 focus 動作。</p>
+	
+	<div class="box mb-52">
+		<p class="mb-28">先將 returnFocus 關閉，以便測試、觀察使用 focus 的時機。</p>
+		
+		<!-- 測試 1 -->
+		<h3 class="h3">測試 1：使用 async / await 寫法，在 fire 結束後 focus 輸入框</h3>
+		<p>
+			會發現，如果使用 Enter 關閉訊息，訊息會一直自動被打開。<br>
+			這是因為，輸入框觸發訊息窗，是寫在 keyup。<br>
+			而訊息窗的 confirm button 是在按下即會觸發。
+		</p>
+		<p>
+			整個流程是：按下 Enter (keydown 或 keypress) → 關閉訊息窗 → 程式往下繼續執行 → focus 輸入框 → 鬆開 Enter (keyup) → 觸發訊息窗。
+		</p>
+		<p>由於程式跑得極快，所以很難避免。</p>
+		
+		<div class="d-block mb-28">
+			<label>
+				請按下 Enter：
+				<input type="text" @keyup.enter="testFocus1" ref="refText1">
+			</label>&nbsp;&nbsp;
+			<button type="button" class="btn btn-primary" @click="testFocus1">點擊開啟訊息窗</button>
+		</div>
+		
+		<!-- 測試 2 -->
+		<h3>測試 2：在生命週期 didClose 或 didDestroy 做 focus 輸入框</h3>
+		<p>
+			由之前生命週期的測試，可以知道 didClose、didDestroy 為異步，並且有一些延遲，因此可以把 focus 寫在這邊，讓 focus 的執行稍慢一點。<br>
+			以正常按一下 Enter 的速度來說，通常可以避免再度觸發訊息窗。<br>
+			但如果手速稍慢的話，當然就還是會觸發訊息窗。
+		</p>
+		
+		<div class="d-block mb-28">
+			<label>
+				請按下 Enter：
+				<input type="text" @keyup.enter="testFocus2" ref="refText2">
+			</label>&nbsp;&nbsp;
+			<button type="button" class="btn btn-primary" @click="testFocus2">點擊開啟訊息窗</button>
+		</div>
+		
+		<!-- 測試 3 -->
+		<h3>測試 3：不讓 Confirm button 被 focus。</h3>
+		<p>
+			訊息窗之所以可以按 Enter 關閉，是因為預設 focus Confirm button，這部份的效果似乎無法關閉...<br>
+			因此在 didOpen 時，將 focus 設定在 popup 視窗上，這樣就不會一按 Enter 就關閉視窗了。<br>
+			但是... 如果使用者按了 Tab，還是能將焦點移到 Confirm button，然後用 Enter 關閉視窗...<br>
+			算是一個... 沒什麼用處的偷吃步方法...
+		</p>
+		
+		<div class="d-block mb-28">
+			<label>
+				請按下 Enter：
+				<input type="text" @keyup.enter="testFocus3" ref="refText3">
+			</label>&nbsp;&nbsp;
+			<button type="button" class="btn btn-primary" @click="testFocus3">點擊開啟訊息窗</button>
+		</div>
+		
+		<!-- 測試 4 -->
+		<h3>測試 4：改成 keyup 才觸發 button</h3>
+		<p>
+			取得 button 元素，並且使用 Listener 改成在 keyup 時才觸發 button 功能。
+		</p>
+		
+		<div class="d-block mb-28">
+			<label>
+				請按下 Enter：
+				<input type="text" @keyup.enter="testFocus4" ref="refText4">
+			</label>&nbsp;&nbsp;
+			<button type="button" class="btn btn-primary" @click="testFocus4">點擊開啟訊息窗</button>
+		</div>
 	</div>
 	
 	

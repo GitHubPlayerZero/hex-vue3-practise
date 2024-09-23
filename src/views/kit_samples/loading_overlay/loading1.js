@@ -8,9 +8,10 @@ const baseSettings = {
 
 
 /**
- * 使用自定義的 loading。
+ * 使用自定義的 loading。  
+ * 允許傳入自己另外的設定，若有與基本設定重複的項目，會使用傳入的設定。
  * @param {Object} [options = {}] vue-loading-overlay 的設定。
- * @returns 使用 loading 的各種方法。
+ * @returns 相關的使用方法或物件。
  */
 export function useMyLoading(options = {})
 {
@@ -21,7 +22,7 @@ export function useMyLoading(options = {})
 	
 	
 	/**
-	 * 開啟 loading。
+	 * 開啟 loading，允許傳入自己另外的設定。
 	 * @param {Object} [options = {}] vue-loading-overlay 的設定。
 	 * @returns 針對這次開啟的 loader，提供調用的方法。
 	 */

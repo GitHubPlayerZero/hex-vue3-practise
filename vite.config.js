@@ -6,11 +6,18 @@ import vueDevTools from 'vite-plugin-vue-devtools';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    base: '/hex-vue3-practise/',
-    plugins: [vue(), vueDevTools()],
-    resolve: {
-        alias: {
-            '@': fileURLToPath(new URL('./src', import.meta.url)),
-        },
-    },
+	base: '/hex-vue3-practise/',
+	plugins: [vue(), vueDevTools()],
+	resolve: {
+		alias: {
+			'@': fileURLToPath(new URL('./src', import.meta.url)),
+		},
+	},
+	css: {
+		preprocessorOptions: {
+			scss: {
+				api: 'modern',
+			},
+		},
+	},
 });

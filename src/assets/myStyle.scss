@@ -1,11 +1,18 @@
+// Bootstrap
+@use 'bootstrap/dist/css/bootstrap';
+
+// Font Awesome
+// $fa-font-path: '/node_modules/@fortawesome/fontawesome-free/webfonts';
+// @import '@fortawesome/fontawesome-free/scss/fontawesome.scss';
+// @import '@fortawesome/fontawesome-free/scss/solid.scss';
+// @import '@fortawesome/fontawesome-free/scss/regular.scss';
 // Font Awesome
 $fa-font-path: '/node_modules/@fortawesome/fontawesome-free/webfonts';
-@import '@fortawesome/fontawesome-free/scss/fontawesome.scss';
-@import '@fortawesome/fontawesome-free/scss/solid.scss';
-@import '@fortawesome/fontawesome-free/scss/regular.scss';
-
-// Bootstrap
-@import 'bootstrap/dist/css/bootstrap';
+@use '@fortawesome/fontawesome-free/scss/fontawesome';
+// 需要在使用到的樣式設定變數配置
+@use '@fortawesome/fontawesome-free/scss/solid' with (
+  $fa-font-path: $fa-font-path
+);
 
 .h1, .h2 {
 	margin-bottom: 20px;

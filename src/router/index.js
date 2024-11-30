@@ -102,6 +102,11 @@ const router = createRouter({
 							name: 'bsToast',
 							component: () => import('@/views/kit_samples/bootstrap/Toast.vue'),
 						},
+						{
+							path: 'form-validation',
+							name: 'bsFormValidation',
+							component: () => import('@/views/kit_samples/bootstrap/FormValidation.vue'),
+						},
 					],
 					
 				},

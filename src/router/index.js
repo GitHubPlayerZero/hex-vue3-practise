@@ -69,6 +69,11 @@ const router = createRouter({
 					name: 'eventTest',
 					component: () => import('../views/samples/EventTest.vue'),
 				},
+				{
+					path: 'pinia-sample',
+					name: 'piniaSample',
+					component: () => import('../views/samples/PiniaSample.vue'),
+				},
 			],
 		},
 		// 套件範例

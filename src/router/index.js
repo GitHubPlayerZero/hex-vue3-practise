@@ -137,6 +137,11 @@ const router = createRouter({
 						},
 					],
 				},
+				{
+					path: 'vee-validate',
+					name: 'veeValidate',
+					component: () => import('@/views/kit_samples/VeeValidate.vue'),
+				},
 			]
 		},
 		// 每日任務

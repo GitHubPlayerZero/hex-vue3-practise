@@ -2,27 +2,24 @@
   <div class="container">
     <h2 class="mb-3">VeeValidate (Options API)</h2>
 
-    <p class="mb-5">
-      這邊將套件的匯入及自訂義規則寫在本隻範例程式中，以便於查看完整的 VeeValidate 使用方式。<br />
-      但在實務上應寫於 main.js，供全域使用為佳。
-    </p>
+    <p class="mb-5">VeeValidate 環境於 main.js 初始化。</p>
 
     <!-- 切換語系 -->
     <div>
-      <h3 class="mb-3">切換語系（{{ currentLanguage }}）</h3>
+      <h3 class="mb-3">切換語系（{{ currentLangName }}）</h3>
       <p class="mb-24">可以藉由 <code>setLocale</code> 重新設定語系。</p>
 
       <button
         type="button"
         class="btn btn-outline-primary me-3"
-        @click="switchLanguage(languageCode.zh_TW)"
+        @click="switchLanguage(languageConf.zh_TW.code)"
       >
         繁體中文
       </button>
       <button
         type="button"
         class="btn btn-outline-success"
-        @click="switchLanguage(languageCode.en)"
+        @click="switchLanguage(languageConf.en.code)"
       >
         英文
       </button>
@@ -1100,7 +1097,7 @@
           rules="required|email"
           :class="{ 'is-invalid': errors['formBsEmail'] }"
         />
-        
+
         <!-- 錯誤訊息 -->
         <VeeErrorMessage name="formBsEmail" class="invalid-feedback" />
       </div>
@@ -1119,7 +1116,7 @@
           :class="{ 'is-invalid': errors['formBsMobile'] }"
         />
         <div>請輸入 1234-123-123 或 1234123123</div>
-        
+
         <!-- 錯誤訊息 -->
         <VeeErrorMessage name="formBsMobile" class="invalid-feedback" />
       </div>
@@ -1142,7 +1139,7 @@
           <option value="Taichung">台中市</option>
           <option value="Kaohsiung">高雄市</option>
         </VeeField>
-        
+
         <!-- 錯誤訊息 -->
         <VeeErrorMessage name="formBsCity" class="invalid-feedback" />
       </div>
@@ -1162,7 +1159,7 @@
             :class="{ 'is-invalid': errors['formBsAgreement'] }"
           />
           <label class="form-check-label" for="formBsAgreement"> 同意 </label>
-          
+
           <!-- 錯誤訊息 -->
           <VeeErrorMessage name="formBsAgreement" class="invalid-feedback" />
         </div>
@@ -1177,121 +1174,20 @@
 </template>
 
 <script>
-// 匯入自製的顯示 VeeValidate 驗證訊息元件
+// 顯示 VeeValidate 驗證訊息元件
 import VeeValidateInfo from '@/components/veeValidate/VeeValidateInfo.vue';
 
-// 匯入 vee-validate
-import { Field, Form, ErrorMessage, defineRule, configure } from 'vee-validate';
-// 匯入 vee-validate 多國語系的功能
-import { localize, setLocale } from '@vee-validate/i18n';
-// 匯入 vee-validate 語系檔案
-import zh_TW from '@vee-validate/i18n/dist/locale/zh_TW.json'; // 繁體中文
-import en from '@vee-validate/i18n/dist/locale/en.json'; // 英文 (預設為英文，可以不須匯入，除非要自訂義英文訊息)
-
-// // 匯入 vee-validate 相關規則，如必填、email 等等
-// import { required, email, regex } from '@vee-validate/rules';
-// // 定義 vee-validate 驗證規則
-// defineRule('required', required);
-// defineRule('email', email);
-// defineRule('regex', regex);
-
-// 匯入 vee-validate 所有規則
-import { all } from '@vee-validate/rules';
-Object.entries(all).forEach(([name, rule]) => {
-  defineRule(name, rule);
-});
-
-// 匯入自訂義的規則
-import { validationRules } from '@/assets/js';
-
-// 自訂義手機驗證規則 1
-// 僅吐回驗證是否通過（true / false）
-defineRule('mobileRule1', (value) => {
-  return validationRules.checkMobile(value);
-});
-
-// 自訂義手機驗證規則 2
-// 驗證不通過時，直接吐回錯誤訊息
-defineRule('mobileRule2', (value) => {
-  return validationRules.checkMobile(value) ? true : '[defineRule mobileRule2] 手機格式不正確';
-});
-
-// 自訂義手機驗證規則 3
-// 僅吐回驗證是否通過（true / false）
-// 在語系中自訂相對應的錯誤訊息
-defineRule('mobileRule3', (value) => {
-  return validationRules.checkMobile(value);
-});
-
-// 自訂義手機驗證規則 4
-// 僅吐回驗證是否通過（true / false）
-// 在語系中自訂相對應的錯誤訊息
-// 能夠傳入額外的參數
-defineRule('mobileRule4', (value, ...rest) => {
-  console.log(`[mobileRule4] rest ==>`, rest);
-  return validationRules.checkMobile(value);
-});
-
-// 配置 vee-validate 相關設定
-configure({
-  // validateOnInput: true, // 當輸入任何內容直接進行驗證
-  // generateMessage: localize({ zhTW: zh_TW }), // 載入繁體中文語系 (六角範例寫法，取別名)
-  // generateMessage: localize({ zh_TW, en }), // 載入多個語系示範
-  // generateMessage: localize({ zh_TW }), // 載入繁體中文語系
-
-  // 在語系中自訂驗證訊息
-  generateMessage: localize({
-    // 繁體中文
-    zh_TW: {
-      messages: {
-        ...zh_TW.messages,
-        mobileRule3: '[defineRule mobileRule3 zh_TW] {field} 格式錯誤',
-
-        mobileRule4: (context) => {
-          console.log(`[defineRule mobileRule4] context ==>`, context);
-          const param = JSON.stringify(context.rule.params);
-          return `[defineRule mobileRule4 zh_TW] ${context.label} 格式錯誤。傳入參數：${param}`;
-        },
-      },
-    }, // 繁體中文 end
-
-    // 英文為預設語系，可以不用再註冊，除非想自訂英文訊息
-    en: {
-      messages: {
-        ...en.messages,
-        mobileRule3: '[defineRule mobileRule3 en] {field} format error',
-      },
-    }, // 英文 end
-  }), // generateMessage end
-});
-
-// 設定 vee-validate 預設語系
-// setLocale('zhTW'); // 繁體中文 (六角範例取別名寫法)
-// setLocale('en');  // 英文 (英文為預設語系，可以不用設定)
-setLocale('zh_TW'); // 繁體中文 (參考官網寫法)
-
-const languageCode = {
-  zh_TW: 'zh_TW',
-  en: 'en',
-};
-const languageMap = {
-  zh_TW: '繁體中文',
-  en: '英文',
-};
+// 使用 VeeValidate
+import { useVeeValidate } from '@/assets/js';
+const veeValidate = useVeeValidate();
 
 export default {
-  components: {
-    VeeValidateInfo,
-    // 註冊 vee-validate 元件
-    VeeForm: Form,
-    VeeField: Field,
-    VeeErrorMessage: ErrorMessage,
-  },
-
   data() {
+    console.log(`data...`);
+
     return {
-      languageCode,
-      currentLanguage: languageMap.zh_TW,
+      languageConf: veeValidate.languageConf,
+      currentLangName: veeValidate.getCurrentLanguage().name,
       form1: {},
       form2: {},
       form3: {},
@@ -1353,9 +1249,7 @@ export default {
 
     // 切換語系
     switchLanguage(language) {
-      console.log(`switchLanguage ==>`, language);
-      setLocale(language);
-      this.currentLanguage = languageMap[language];
+      this.currentLangName = veeValidate.switchLanguage(language).name;
     },
 
     // 驗證手機
@@ -1391,6 +1285,10 @@ export default {
       return value ? true : '請勾選同意';
     },
   }, // methods end
+
+  components: {
+    VeeValidateInfo,
+  },
 };
 </script>
 

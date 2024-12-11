@@ -20,4 +20,12 @@ app.use(router);
 // plugin vue-loading-overlay
 app.use(LoadingPlugin);
 
+// 使用 VeeValidate
+import { useVeeValidate } from '@/assets/js';
+const veeValidate = useVeeValidate();
+veeValidate.initEnvironment();
+Object.entries(veeValidate.getComponents()).forEach(([name, component]) => {
+  app.component(name, component);
+});
+
 app.mount('#app');

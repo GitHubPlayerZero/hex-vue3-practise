@@ -26,7 +26,7 @@
   <!-- 表單 -->
   <VeeForm @submit="submitForm">
     <!-- text -->
-    <div class="sub-box mb-24">
+    <div class="sub-box">
       <div class="mb-24">
         <h3 class="h3">Text</h3>
       </div>
@@ -46,7 +46,7 @@
     </div>
 
     <!-- Select 下拉選單 -->
-    <div class="sub-box mb-24">
+    <div class="sub-box">
       <div class="mb-24">
         <h3 class="h3">Select 下拉選單</h3>
         <p>需要在 <code>&lt;Field></code> 元件裡面設定屬性 <code>as="select"</code></p>
@@ -71,7 +71,7 @@
     </div>
 
     <!-- 單選框 Radio button -->
-    <div class="sub-box mb-24">
+    <div class="sub-box">
       <div class="mb-24">
         <h3 class="h3">單選框 Radio button</h3>
         <p>
@@ -186,7 +186,7 @@
     </div>
 
     <!-- 複選框 Checkbox -->
-    <div class="sub-box mb-24">
+    <div class="sub-box">
       <div class="mb-24">
         <h3 class="h3">複選框 Checkbox</h3>
         <p>
@@ -332,7 +332,7 @@
     </div>
     
     <!-- Textarea -->
-    <div class="sub-box mb-24">
+    <div class="sub-box">
       <div class="mb-24">
         <h3 class="h3">Textarea</h3>
         <p>需要在 <code>&lt;Field></code> 元件裡面設定屬性 <code>as="textarea"</code></p>

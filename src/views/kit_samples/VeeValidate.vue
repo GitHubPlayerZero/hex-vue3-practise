@@ -620,6 +620,7 @@ hr {
 .sub-box {
   border: 2px dotted green;
   padding: 15px;
+  margin-bottom: 24px;
 }
 
 .h3 {

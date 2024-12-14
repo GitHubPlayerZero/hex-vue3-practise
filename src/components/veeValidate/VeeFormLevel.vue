@@ -1,140 +1,159 @@
 <template>
-  <h3 class="mb-24">表單級驗證（Form-level Validation）</h3>
+  <h2 class="mb-24">表單級驗證（Form-level Validation）</h2>
 
-  <div class="mb-5">
+  <!-- 說明 -->
+  <div class="mb-40">
     <ul>
       <li>
-        在 VeeValidate 的 <code>&lt;Form></code> 元件中綁定 <code>validation-schema</code> 屬性。
+        在 Vue 元件的資料中定義自己的驗證規則（schema），以物件型態撰寫，屬性鍵項為表單控件元素的
+        <code>name</code>，屬性值為驗證方法。
       </li>
       <li>
-        當使用了表單級驗證後，所有的檢核都必須定義於 schema 中；
+        驗證方法預設會傳入 <code>&lt;Field></code> 輸入值、以及 VeeValidate
+        一些驗證資訊（物件型態）。
+      </li>
+      <li>
+        在 VeeValidate 的 <code>&lt;Form></code> 元件中以
+        <code>validation-schema</code> 綁定所定義的驗證規則 schema。
+      </li>
+      <li>
+        當使用了表單級驗證後，所有的驗證規則都必須定義於 schema 中，
         <code>&lt;Field></code>
-        元件中設定的 <code>rules</code> 屬性將失去作用。
+        元件中設定的 <code>rules</code> 將失去作用。
       </li>
       <li>由於 schema 中的驗證是自己定義寫死的，因此無法自動配合語系更換。</li>
     </ul>
   </div>
 
-  <VeeForm :validation-schema="form2Schema" v-slot="{ errors, values }" @submit="submitForm">
+  <!-- 表單 -->
+  <VeeForm :validation-schema="formSchema" v-slot="{ errors, values }" @submit="submitForm">
     <VeeValidateInfo :errors="errors" :values="values" />
 
-    <!-- 姓名 -->
-    <div class="sub-box mb-24">
-      <p>
-        驗證必填。<br />
-        「姓名 1」的驗證定義於 <code>&lt;Field></code> 元件的 <code>rules</code> 而不是表單的
-        schema，將不會有驗證效果。<br />
-        「姓名 2」的驗證定義於 schema。
-      </p>
+    <div class="sub-box">
+      <div class="mb-24">
+        <p>
+          在以下表單範例中，「Email」的驗證定義於 <code>&lt;Field></code> 元件的
+          <code>rules</code> 而不是表單的 schema，將不會有驗證效果。
+        </p>
+      </div>
 
+      <!-- 姓名 -->
       <div class="mb-3">
-        <label for="form2Name1">姓名 1：</label>
+        <label for="formLevelName">姓名：</label>
         <VeeField
-          name="form2Name1"
-          id="form2Name1"
           type="text"
+          id="formLevelName"
+          name="formLevelName"
           placeholder="請輸入姓名"
-          rules="required"
-          v-model="form2.name1"
-        ></VeeField>
+          v-model="formData.name"
+          label="姓名"
+        />
         &nbsp;&nbsp;&nbsp;
-        <VeeErrorMessage name="form2Name1" class="text-danger"></VeeErrorMessage>
+        <VeeErrorMessage name="formLevelName" class="text-danger" />
       </div>
 
-      <div>
-        <label for="form2Name2">姓名 2：</label>
+      <!-- Email -->
+      <!-- 自己定義 rules 不會有作用 -->
+      <div class="mb-3">
+        <label for="formLevelEmail">Email：</label>
         <VeeField
-          name="form2Name2"
-          id="form2Name2"
-          type="text"
-          placeholder="請輸入姓名"
-          v-model="form2.name2"
-        ></VeeField>
+          type="email"
+          id="formLevelEmail"
+          name="formLevelEmail"
+          placeholder="請輸入 Email"
+          v-model="formData.email"
+          label="Email"
+          rules="required|email"
+        />
         &nbsp;&nbsp;&nbsp;
-        <VeeErrorMessage name="form2Name2" class="text-danger"></VeeErrorMessage>
+        <VeeErrorMessage name="formLevelEmail" class="text-danger" />
       </div>
-    </div>
-
-    <div class="sub-box mb-24">
-      <p>Checkbox & Radio button。</p>
 
       <!-- 技能 -->
       <div class="mb-3">
         <span>技能：</span>&nbsp;
+        <button type="button" class="btn btn-secondary btn-sm" @click="formData.skill = ''">
+          清除技能
+        </button>
+        &nbsp;&nbsp;
 
         <!-- CSS -->
         <VeeField
           type="checkbox"
-          name="form2Skill"
-          id="form2SkillCss"
+          id="formLevelSkillCss"
+          name="formLevelSkill"
           value="CSS"
-          v-model="form2.skill"
+          v-model="formData.skill"
         />
         &nbsp;
-        <label for="form2SkillCss">CSS</label>
-        &nbsp;&nbsp;
+        <label for="formLevelSkillCss">CSS&nbsp;&nbsp;</label>
+        &nbsp;
 
         <!-- HTML -->
         <VeeField
           type="checkbox"
-          name="form2Skill"
-          id="form2SkillHtml"
+          id="formLevelSkillHtml"
+          name="formLevelSkill"
           value="HTML"
-          v-model="form2.skill"
+          v-model="formData.skill"
         />
         &nbsp;
-        <label for="form2SkillHtml">HTML</label>
-        &nbsp;&nbsp;
+        <label for="formLevelSkillHtml">HTML&nbsp;&nbsp;</label>
+        &nbsp;
 
         <!-- JavaScript -->
         <VeeField
           type="checkbox"
-          name="form2Skill"
-          id="form2SkillJs"
+          id="formLevelSkillJs"
+          name="formLevelSkill"
           value="JavaScript"
-          v-model="form2.skill"
+          v-model="formData.skill"
         />
         &nbsp;
-        <label for="form2SkillJs">JavaScript</label>
-        &nbsp;&nbsp;
+        <label for="formLevelSkillJs">JavaScript&nbsp;&nbsp;</label>
+        &nbsp;
 
         <!-- 錯誤訊息 -->
-        <VeeErrorMessage name="form2Skill" class="text-danger"></VeeErrorMessage>
+        <VeeErrorMessage name="formLevelSkill" class="text-danger" />
       </div>
+      <!-- 技能 end -->
 
-      <!-- 性別 1 -->
+      <!-- 性別 -->
       <div>
         <span>性別：</span>&nbsp;
+        <button type="button" class="btn btn-secondary btn-sm" @click="formData.gender = ''">
+          清除性別
+        </button>
+        &nbsp;&nbsp;
 
         <!-- Male -->
         <VeeField
           type="radio"
-          name="form2Gender"
-          id="form2GenderMale"
+          id="formLevelGenderMale"
+          name="formLevelGender"
           value="male"
-          rules="required"
-          v-model="form2.gender"
+          v-model="formData.gender"
         />
         &nbsp;
-        <label for="form2GenderMale">Male</label>
-        &nbsp;&nbsp;
+        <label for="formLevelGenderMale">Male&nbsp;&nbsp;</label>
+        &nbsp;
 
         <!-- Female -->
         <VeeField
           type="radio"
-          name="form2Gender"
-          id="form2GenderFemale"
+          id="formLevelGenderFemale"
+          name="formLevelGender"
           value="female"
-          rules="required"
-          v-model="form2.gender"
+          v-model="formData.gender"
         />
         &nbsp;
-        <label for="form2GenderFemale">Female</label>
-        &nbsp;&nbsp;
+        <label for="formLevelGenderFemale">Female&nbsp;&nbsp;</label>
+        &nbsp;
 
         <!-- 錯誤訊息 -->
-        <VeeErrorMessage name="form2Gender" class="text-danger"></VeeErrorMessage>
+        <VeeErrorMessage name="formLevelGender" class="text-danger" />
       </div>
+      <!-- 性別 end -->
     </div>
 
     <!-- 功能按鈕 -->
@@ -147,47 +166,65 @@
 <script>
 import VeeValidateInfo from './VeeValidateInfo.vue';
 
+/**
+ * 取得欄位名稱。
+ * @param {Object} validator - VeeValidate 的驗證資訊。
+ * @return {String} 欄位名稱。若有 label 則回傳 label 內容，否則回傳 name。
+ */
+function getColumnName(validator) {
+  return validator.label || validator.name;
+}
+
 export default {
   data() {
     return {
-      form2: {},
+      formData: {},
 
-      // Form 2 表單級驗證 schema
-      form2Schema: {
-        // 姓名 2
-        form2Name2(value) {
-          console.log(`form2Name2 ==>`, value);
+      // 表單級驗證 schema
+      formSchema: {
+        // 姓名
+        formLevelName(value, validator) {
+          console.log(`姓名 ==>`, value);
           if (value) {
             return true;
           }
-          return '姓名為必填';
+          return `[${getColumnName(validator)}] 為必填`;
         },
 
+        // Email
+        // formLevelEmail(value, validator) {
+        //   console.log(`Email ==>`, value);
+        //   if (value) {
+        //     return true;
+        //   }
+        //   return `[${getColumnName(validator)}] 為必填`;
+        // },
+
         // 技能
-        form2Skill(value) {
-          console.log(`form2Skill ==>`, value);
+        formLevelSkill(value) {
+          console.log(`技能 ==>`, value);
           if (value && value.length) {
             return true;
           }
-          return '必須選擇至少一個技能';
+          return `必須選擇至少一個技能`;
         },
 
         // 性別
-        form2Gender(value) {
-          console.log(`form2Gender ==>`, value);
+        formLevelGender(value) {
+          console.log(`性別 ==>`, value);
           if (value) {
             return true;
           }
-          return '請選擇性別';
+          return `請選擇性別`;
         },
-      }, // form2Schema end
+      }, // 表單級驗證 schema end
     };
   }, // data end
 
   methods: {
     submitForm(form) {
-      console.log(`[表單級驗證 submit] VeeValidate form ==>`, form);
-      console.log(`[表單級驗證 submit] form data ==>`, this.form2);
+      console.log(`# [veeFormLevel] submit VeeValidate form ==>`, form);
+      console.log(`# [veeFormLevel] submit formData ==>`, this.formData);
     },
   },
 

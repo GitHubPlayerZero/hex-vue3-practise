@@ -63,7 +63,7 @@ export function useVeeValidate() {
     // 自訂義手機驗證規則 2
     // 驗證不通過時，直接吐回錯誤訊息
     defineRule('mobileRule2', (value) => {
-      return validationRules.checkMobile(value) ? true : '[defineRule mobileRule2] 手機格式不正確';
+      return validationRules.checkMobile(value) ? true : '[mobileRule2] 手機格式不正確';
     });
 
     // 自訂義手機驗證規則 3
@@ -77,8 +77,10 @@ export function useVeeValidate() {
     // 僅吐回驗證是否通過（true / false）
     // 在語系中自訂相對應的錯誤訊息
     // 能夠傳入額外的參數
-    defineRule('mobileRule4', (value, ...rest) => {
-      console.log(`[mobileRule4] rest ==>`, rest);
+    defineRule('mobileRule4', (value, rulesParam, validator) => {
+      console.log(`[mobileRule4] value ==>`, value);
+      console.log(`[mobileRule4] rulesParam ==>`, rulesParam);
+      console.log(`[mobileRule4] validator ==>`, validator);
       return validationRules.checkMobile(value);
     });
 
@@ -97,12 +99,12 @@ export function useVeeValidate() {
         zh_TW: {
           messages: {
             ...zh_TW.messages,
-            mobileRule3: '[defineRule mobileRule3 zh_TW] {field} 格式錯誤',
+            mobileRule3: '[mobileRule3 - zh_TW] {field} 格式錯誤',
 
             mobileRule4: (context) => {
-              console.log(`[defineRule mobileRule4] context ==>`, context);
+              console.log(`[mobileRule4] context ==>`, context);
               const param = JSON.stringify(context.rule.params);
-              return `[defineRule mobileRule4 zh_TW] ${context.label} 格式錯誤。傳入參數：${param}`;
+              return `[mobileRule4 - zh_TW] ${context.label} 格式錯誤。rules 傳入參數：${param}`;
             },
           },
         }, // 繁體中文 end
@@ -111,7 +113,7 @@ export function useVeeValidate() {
         en: {
           messages: {
             ...en.messages,
-            mobileRule3: '[defineRule mobileRule3 en] {field} format error',
+            mobileRule3: '[mobileRule3 - en] {field} format error',
             // mobileRule4 客製訊息僅定義於繁體中文，英文沒定義會使用預設訊息
           },
         }, // 英文 end

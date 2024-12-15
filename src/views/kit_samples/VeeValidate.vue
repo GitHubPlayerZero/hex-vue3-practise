@@ -42,232 +42,9 @@
 
     <hr />
 
-    <!-- Form 3 -->
-    <h3 class="mb-24">Form 3</h3>
-
-    <div class="mb-5">
-      <p>自訂義驗證。</p>
-      <p>這邊以驗證手機號碼為例，格式應為「1234-123-123」或「1234123123」。</p>
-    </div>
-
-    <VeeForm v-slot="{ errors, values }" @submit="submitForm3">
-      <VeeValidateInfo :errors="errors" :values="values" />
-
-      <!-- 方式一 -->
-      <div class="sub-box mb-24">
-        <h5 class="mb-3">方式一</h5>
-        <p>
-          <code>rules</code> 使用 <code>v-bind</code> 綁定自訂的檢驗的
-          <code>methods</code>，預設會傳入欄位值。<br />
-          由於訊息為方法裡面寫死的，所以無法自動隨著語系更換而改變。
-        </p>
-
-        <label for="form3Mobile1">手機：</label>
-        <VeeField
-          id="form3Mobile"
-          name="form3Mobile"
-          type="tel"
-          placeholder="請輸入手機"
-          class="mb-2"
-          :rules="checkMobile"
-          v-model="form3.mobile"
-        />
-        &nbsp;&nbsp;&nbsp;
-        <VeeErrorMessage name="form3Mobile" class="text-danger"></VeeErrorMessage>
-      </div>
-
-      <!-- 方式二 -->
-      <div class="sub-box mb-24">
-        <h5 class="mb-3">方式二</h5>
-        <p>使用 VeeValidate 的 <code>defineRule</code> 新增自訂規則。<br /></p>
-
-        <!-- 手機 1 -->
-        <div class="mb-24">
-          <p>
-            [手機 1] 使用 <code>mobileRule1</code>，驗證僅會回傳 true / false。<br />
-            VeeValidate 會有自己預設的訊息，可以切換語系。
-          </p>
-
-          <label for="form3Mobile1">手機 1：</label>
-          <VeeField
-            id="form3Mobile1"
-            name="form3Mobile1"
-            type="tel"
-            placeholder="請輸入手機"
-            class="mb-2"
-            label="手機 1"
-            rules="mobileRule1"
-            v-model="form3.mobile1"
-          />
-          &nbsp;&nbsp;&nbsp;
-          <VeeErrorMessage name="form3Mobile1" class="text-danger"></VeeErrorMessage>
-        </div>
-
-        <!-- 手機 2 -->
-        <div class="mb-24">
-          <p>
-            [手機 2] 使用 <code>mobileRule2</code>，驗證不通過會直接吐回錯誤訊息。<br />
-            由於錯誤訊息是自己寫死的，因此無法自動隨著語系更換而改變。
-          </p>
-
-          <label for="form3Mobile2">手機 2：</label>
-          <VeeField
-            id="form3Mobile2"
-            name="form3Mobile2"
-            type="tel"
-            placeholder="請輸入手機"
-            class="mb-2"
-            label="手機 2"
-            rules="mobileRule2"
-            v-model="form3.mobile2"
-          />
-          &nbsp;&nbsp;&nbsp;
-          <VeeErrorMessage name="form3Mobile2" class="text-danger"></VeeErrorMessage>
-        </div>
-      </div>
-
-      <!-- 方式三 -->
-      <div class="sub-box mb-24">
-        <div class="mb-24">
-          <h5 class="mb-3">方式三</h5>
-          <p>
-            承方式二，除了使用 <code>defineRule</code> 新增規則之外，並且
-            <span class="fw-bold">於語系中自訂義驗證錯誤的訊息</span>，
-            可以隨著語系切換（沒有定義的語系就會使用 VeeValidate 自己的預設訊息）。<br />
-            是目前<span class="fw-bold">個人覺得彈性最佳的方式。</span>
-          </p>
-        </div>
-
-        <!-- 手機 3 -->
-        <div class="mb-24">
-          <p>[手機 3] 使用 <code>mobileRule3</code>。</p>
-
-          <label for="form3Mobile3">手機 3：</label>
-          <VeeField
-            id="form3Mobile3"
-            name="form3Mobile3"
-            type="tel"
-            placeholder="請輸入手機"
-            class="mb-2"
-            label="手機 3"
-            rules="mobileRule3"
-            v-model="form3.mobile3"
-          />
-          &nbsp;&nbsp;&nbsp;
-          <VeeErrorMessage name="form3Mobile3" class="text-danger"></VeeErrorMessage>
-        </div>
-      </div>
-
-      <!-- 方式四 -->
-      <div class="sub-box mb-24">
-        <div class="mb-24">
-          <h5 class="mb-3">方式四</h5>
-          <p>
-            承方式三，可以於新增的規則方法中傳入其它參數。<br />
-            而語系中自訂義的驗證訊息也可以使用方法，預設會傳入 VeeValidate
-            的資訊物件參數，可以由其中取得需要的資訊。
-          </p>
-          <p>使用 <code>mobileRule4</code>。</p>
-        </div>
-
-        <div class="mb-24">
-          <!-- 手機 4 - A -->
-          <div class="mb-2">
-            <label for="form3Mobile4a">手機 4 - A（沒有傳入參數）：</label>
-            <VeeField
-              id="form3Mobile4a"
-              name="form3Mobile4a"
-              type="tel"
-              placeholder="請輸入手機"
-              class="mb-2"
-              label="手機 4 - A"
-              rules="mobileRule4"
-              v-model="form3.mobile4a"
-            />
-            &nbsp;&nbsp;&nbsp;
-            <VeeErrorMessage name="form3Mobile4a" class="text-danger"></VeeErrorMessage>
-          </div>
-
-          <!-- 手機 4 - B -->
-          <div class="mb-2">
-            <label for="form3Mobile4b">手機 4 - B（參數傳入物件）：</label>
-            <VeeField
-              id="form3Mobile4b"
-              name="form3Mobile4b"
-              type="tel"
-              placeholder="請輸入手機"
-              class="mb-2"
-              label="手機 4 - B"
-              :rules="{ mobileRule4: { test1: 'test1', test2: 'test2' } }"
-              v-model="form3.mobile4b"
-            />
-            &nbsp;&nbsp;&nbsp;
-            <VeeErrorMessage name="form3Mobile4b" class="text-danger"></VeeErrorMessage>
-          </div>
-
-          <!-- 手機 4 - C -->
-          <div class="mb-2">
-            <label for="form3Mobile4c">手機 4 - C（參數傳入陣列）：</label>
-            <VeeField
-              id="form3Mobile4c"
-              name="form3Mobile4c"
-              type="tel"
-              placeholder="請輸入手機"
-              class="mb-2"
-              label="手機 4 - C"
-              :rules="{ mobileRule4: ['test1', 'test2'] }"
-              v-model="form3.mobile4c"
-            />
-            &nbsp;&nbsp;&nbsp;
-            <VeeErrorMessage name="form3Mobile4c" class="text-danger"></VeeErrorMessage>
-          </div>
-
-          <p class="mt-4">
-            使用 <code>defineRule</code> 自訂義的規則，也可以與其它規則共同搭配使用。
-          </p>
-
-          <!-- 手機 4 - D -->
-          <div class="mb-2">
-            <label for="form3Mobile4d">手機 4 - D（搭配必填，字串寫法）：</label>
-            <VeeField
-              id="form3Mobile4d"
-              name="form3Mobile4d"
-              type="tel"
-              placeholder="請輸入手機"
-              class="mb-2"
-              label="手機 4 - D"
-              rules="required|mobileRule4"
-              v-model="form3.mobile4d"
-            />
-            &nbsp;&nbsp;&nbsp;
-            <VeeErrorMessage name="form3Mobile4d" class="text-danger"></VeeErrorMessage>
-          </div>
-
-          <!-- 手機 4 - E -->
-          <div class="mb-2">
-            <label for="form3Mobile4e">手機 4 - E（搭配必填，物件寫法）：</label>
-            <VeeField
-              id="form3Mobile4e"
-              name="form3Mobile4e"
-              type="tel"
-              placeholder="請輸入手機"
-              class="mb-2"
-              label="手機 4 - E"
-              :rules="{ required: true, mobileRule4: true }"
-              v-model="form3.mobile4e"
-            />
-            &nbsp;&nbsp;&nbsp;
-            <VeeErrorMessage name="form3Mobile4e" class="text-danger"></VeeErrorMessage>
-          </div>
-        </div>
-      </div>
-
-      <!-- 功能按鈕 -->
-      <div>
-        <button class="btn btn-primary">Submit</button>
-      </div>
-    </VeeForm>
-
+    <!-- 自定義驗證 -->
+    <VeeDefinition prefix="def" />
+    
     <hr />
 
     <!-- 與 Bootstrap 結合使用 -->
@@ -532,6 +309,7 @@
 import VeeBase from '@/components/veeValidate/VeeBase.vue';
 import VeeTest from '@/components/veeValidate/VeeTest.vue';
 import VeeFormLevel from '@/components/veeValidate/VeeFormLevel.vue';
+import VeeDefinition from '@/components/veeValidate/VeeDefinition.vue';
 
 // 顯示 VeeValidate 驗證訊息元件
 import VeeValidateInfo from '@/components/veeValidate/VeeValidateInfo.vue'; // TODO delete
@@ -545,6 +323,7 @@ export default {
     VeeBase,
     VeeTest,
     VeeFormLevel,
+    VeeDefinition,
     VeeValidateInfo,
   },
 
@@ -554,17 +333,11 @@ export default {
     return {
       languageConf: veeValidate.languageConf,
       currentLangName: veeValidate.getCurrentLanguage().name,
-      form3: {},
       formBs: {},
     }; // return end
   }, // data end
 
   methods: {
-    // Form 3 submit
-    submitForm3(form) {
-      console.log(`[submitForm3] form ==>`, form);
-      console.log(`[submitForm3] form3 ==>`, this.form3);
-    },
     // Form Bootstrap submit
     submitBsForm(form) {
       console.log(`[submitBsForm] form ==>`, form);
@@ -574,16 +347,6 @@ export default {
     // 切換語系
     switchLanguage(language) {
       this.currentLangName = veeValidate.switchLanguage(language).name;
-    },
-
-    // 驗證手機
-    checkMobile(value) {
-      console.log(`[checkMobile] value ==>`, value);
-      if (value) {
-        return validationRules.checkMobile(value) ? true : '手機格式不正確';
-      } else {
-        return '手機為必填';
-      }
     },
 
     // 驗證外號

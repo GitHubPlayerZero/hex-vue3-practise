@@ -6,6 +6,7 @@
     <p>這邊以驗證手機號碼為例，格式應為「1234-123-123」或「1234123123」。</p>
   </div>
 
+  <!-- 表單 -->
   <VeeForm v-slot="{ errors, values }" @submit="submitForm">
     <VeeValidateInfo :errors="errors" :values="values" />
 

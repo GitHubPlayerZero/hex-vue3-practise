@@ -1,5 +1,13 @@
 <template>
   <h2 class="mb-24">表單級驗證（Form-level Validation）</h2>
+  <p>
+    <a
+      href="https://github.com/GitHubPlayerZero/hex-vue3-practise/blob/main/src/components/veeValidate/VeeFormLevel.vue"
+      target="_blank"
+    >
+      code
+    </a>
+  </p>
 
   <!-- 說明 -->
   <div class="mb-40">

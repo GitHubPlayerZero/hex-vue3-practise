@@ -1,5 +1,13 @@
 <template>
   <h2 class="mb-24">基本範例</h2>
+  <p>
+    <a
+      href="https://github.com/GitHubPlayerZero/hex-vue3-practise/blob/main/src/components/veeValidate/veeBase.vue"
+      target="_blank"
+    >
+      code
+    </a>
+  </p>
 
   <!-- 說明 -->
   <div class="mb-32">
@@ -330,14 +338,14 @@
         <VeeErrorMessage :name="`${prefix}Skill2`" class="text-danger" />
       </div>
     </div>
-    
+
     <!-- Textarea -->
     <div class="sub-box">
       <div class="mb-24">
         <h3 class="h3">Textarea</h3>
         <p>需要在 <code>&lt;Field></code> 元件裡面設定屬性 <code>as="textarea"</code></p>
       </div>
-      
+
       <div class="d-flex flex-wrap mb-2">
         <label :for="`${prefix}Remark`" class="me-2">備註：</label>
         <VeeField

@@ -1,8 +1,26 @@
 <template>
   <div class="container">
     <h1 class="mb-3">VeeValidate (Options API)</h1>
+    <p>
+      <a href="https://vee-validate.logaretm.com/v4/" target="_blank">官網</a>｜
+      <a
+        href="https://github.com/GitHubPlayerZero/hex-vue3-practise/blob/main/src/views/kit_samples/VeeValidate.vue"
+        target="_blank"
+      >
+        code
+      </a>
+    </p>
 
-    <p class="mb-5">VeeValidate 環境於 main.js 初始化。</p>
+    <p class="mb-5">
+      VeeValidate 環境於
+      <a
+        href="https://github.com/GitHubPlayerZero/hex-vue3-practise/blob/main/src/main.js"
+        target="_blank"
+      >
+        main.js
+      </a>
+      初始化。
+    </p>
 
     <!-- 切換語系 -->
     <div>

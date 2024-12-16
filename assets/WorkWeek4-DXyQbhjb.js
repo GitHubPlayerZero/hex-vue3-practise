@@ -1,1 +1,0 @@
-import{_ as r,a,b as t,e as o,F as n,o as s}from"./index-DZCQ95xT.js";const l={};function u(c,e){return s(),a(n,null,[e[0]||(e[0]=t("h2",null,"第四週作業",-1)),e[1]||(e[1]=t("p",null,[o("請至 "),t("a",{href:"https://github.com/GitHubPlayerZero/hex-vue3-week4",target:"_blank"},"這裡")],-1))],64)}const k=r(l,[["render",u]]);export{k as default};

@@ -1,4 +1,4 @@
-import './assets/myStyle.scss';
+import './assets/scss/myStyle.scss';
 
 import 'bootstrap';
 

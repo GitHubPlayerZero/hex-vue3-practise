@@ -2,6 +2,7 @@
 import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 import PracticeSamples from '@/views/samples/PracticeSamples.vue';
+import KitSamples from '@/views/kit_samples/KitSamples.vue';
 
 const router = createRouter({
 	// history: createWebHistory(import.meta.env.BASE_URL),
@@ -80,12 +81,12 @@ const router = createRouter({
 		{
 			path: '/kitsamples',
 			name: 'kitSamples',
-			component: () => import('../views/kit_samples/KitSamples.vue'),
+			component: KitSamples,
 			children: [
 				{
 					path: '',
 					name: 'kitsamples-default',
-					component: () => import('../views/kit_samples/SweetAlert2.vue'),
+					component: () => import('@/views/kit_samples/SweetAlert2.vue'),
 				},
 				{
 					path: 'bootstrap',
@@ -141,6 +142,11 @@ const router = createRouter({
 					path: 'vee-validate',
 					name: 'veeValidate',
 					component: () => import('@/views/kit_samples/VeeValidate.vue'),
+				},
+				{
+					path: 'swiper',
+					name: 'swiper',
+					component: () => import('@/views/kit_samples/swiper/SwiperComposition.vue'),
 				},
 			]
 		},
@@ -246,7 +252,7 @@ const router = createRouter({
 				{
 					path: '',
 					name: 'homework-default',
-					component: () => import('../views/homework/week3_2/WorkWeek3_2.vue'),
+					component: () => import('../views/homework/WorkWeek1.vue'),
 				},
 				{
 					path: 'week1',

@@ -10,7 +10,7 @@
 		<RouterLink to="/homework/week4">第 4 週作業</RouterLink>｜
 	</nav>
 
-	<hr style="margin: 0 0 24px; border: 3px solid pink; box-shadow: 2px 2px 3px orchid" />
+	<hr class="hr-catalog" />
 
 	<router-view></router-view>
 </template>

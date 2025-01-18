@@ -1,10 +1,10 @@
 <template>
   <h1 class="mb-32">Swiper（Options）</h1>
-  
+
   <div class="mb-24">
     <a href="https://swiperjs.com/" target="_blank">官網</a>｜
     <a
-      href=""
+      href="https://github.com/GitHubPlayerZero/hex-vue3-practise/blob/main/src/views/kit_samples/swiper/SwiperOptions.vue"
       target="_blank"
     >
       code
@@ -369,7 +369,7 @@
         直接使用 vue 的模板引用方式（<code>template-refs</code>）綁定 Swiper 元件。<br />
         此做法得到的 Swiper 實例不太一樣，會無法操作，console 會出現錯誤。
       </p>
-      
+
       <button type="button" class="btn btn-secondary" @click="toPrev1">測試 1 - 往前</button>
       &nbsp;
       <button type="button" class="btn btn-secondary" @click="toNext1">測試 1 - 往後</button>

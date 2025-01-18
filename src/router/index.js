@@ -146,9 +146,21 @@ const router = createRouter({
 				{
 					path: 'swiper',
 					name: 'swiper',
-					component: () => import('@/views/kit_samples/swiper/SwiperComposition.vue'),
+					component: () => import('@/views/kit_samples/swiper/SwiperCatalog.vue'),
+          children: [
+            {
+              path: 'swiper-composition',
+              name: 'swiperComposition',
+              component: () => import('@/views/kit_samples/swiper/SwiperComposition.vue'),
+            },
+            {
+              path: 'swiper-options',
+              name: 'swiperOptions',
+              component: () => import('@/views/kit_samples/swiper/SwiperOptions.vue'),
+            },
+          ]
 				},
-			]
+      ]
 		},
 		// 每日任務
 		{

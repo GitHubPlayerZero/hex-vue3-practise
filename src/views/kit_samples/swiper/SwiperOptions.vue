@@ -1,15 +1,28 @@
 <template>
-  <h1 class="mb-32">Swiper（Composition）</h1>
-
-  <div class="mb-5">
+  <h1 class="mb-32">Swiper（Options）</h1>
+  
+  <div class="mb-24">
     <a href="https://swiperjs.com/" target="_blank">官網</a>｜
     <a
-      href="https://github.com/GitHubPlayerZero/hex-vue3-practise/blob/main/src/views/kit_samples/swiper/SwiperComposition.vue"
+      href=""
       target="_blank"
     >
       code
     </a>
   </div>
+
+  <p>
+    在 Options API 中，用法與 Composition API 一樣，差別只在於 Vue
+    的語法（components、data、methods、template-refs 等等寫法）。
+  </p>
+  <p>
+    這邊的範例是直接將 Composition API 的範例移植過來，再調整為 Options API
+    的寫法，因此一些相同的說明這邊就不再重複撰寫。<br />
+    欲看完整說明可以參考
+    <RouterLink :to="{ name: 'swiperComposition' }">Composition API 範例</RouterLink>。
+  </p>
+
+  <hr class="hr-main" />
 
   <!-- 官網範例 -->
   <section>
@@ -41,11 +54,6 @@
   <!-- 只有一個 Slide -->
   <section>
     <h2 class="mb-28">只有一個 Slide</h2>
-
-    <p>
-      當只有一個 Slide 時，<code>Navigation</code>, <code>Pagination</code>,
-      <code>Scrollbar</code> 均不會出現。
-    </p>
 
     <Swiper
       :modules="swiperModules"
@@ -216,16 +224,6 @@
   <!-- 分頁 - 自訂 -->
   <section>
     <h3 class="mb-16">自訂</h3>
-
-    <p>此部份的設定較複雜，可寫成物件變數，再綁定於 <code>pagination</code>。</p>
-    <p>
-      在物件變數中，可以使用 <code>renderBullet</code> 屬性回傳自訂的 HTML，並使用客製的樣式
-      class。<br />
-      但激活的樣式會固定套用
-      <code>.swiper-pagination-bullet-active</code> class，因此若想改變激活樣式，就需要建立此名稱的
-      class 並定義自己想要的樣式內容，以覆蓋原本的設定。
-    </p>
-
     <Swiper :modules="swiperModules" :navigation="true" :loop="true" :pagination="paginationCustom">
       <SwiperSlide class="slide1">Slide 1</SwiperSlide>
       <SwiperSlide class="slide2">Slide 2</SwiperSlide>
@@ -291,11 +289,6 @@
   <section>
     <h3 class="mb-16">可鍵盤控制</h3>
 
-    <p>
-      目前測試的效果是：只要在畫面上按向左、向右、PgUp、PgDn 都會控制視圖跳轉。<br />
-      看起來事件的監聽是綁定在 document。
-    </p>
-
     <Swiper
       :modules="swiperModules"
       :navigation="true"
@@ -320,9 +313,6 @@
   <!-- 分頁 - 自動播放 -->
   <section>
     <h3 class="mb-16">自動播放</h3>
-
-    <p>即使 <code>navigation</code> 沒有設定循環，自動播放仍可以自動循環。</p>
-    <p>這邊設計為當對輪播進行操作時，會中斷自動播放（<code>disableOnInteraction: true</code>）。</p>
 
     <Swiper
       :modules="swiperModules"
@@ -375,12 +365,11 @@
     <!-- 測試 1 -->
     <div class="mb-32 p-3 border border-secondary">
       <h4>測試 1（<code>refSwiper1</code>）</h4>
-
       <p>
         直接使用 vue 的模板引用方式（<code>template-refs</code>）綁定 Swiper 元件。<br />
         此做法得到的 Swiper 實例不太一樣，會無法操作，console 會出現錯誤。
       </p>
-
+      
       <button type="button" class="btn btn-secondary" @click="toPrev1">測試 1 - 往前</button>
       &nbsp;
       <button type="button" class="btn btn-secondary" @click="toNext1">測試 1 - 往後</button>
@@ -401,9 +390,7 @@
   </section>
 </template>
 
-<script setup>
-import { onMounted, reactive, ref } from 'vue';
-
+<script>
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from 'swiper/vue';
 
@@ -417,101 +404,110 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/effect-cube';
 
-// Swiper modules
-const swiperModules = [Navigation, Pagination, Scrollbar, EffectCube, Keyboard, Autoplay];
+export default {
+  data() {
+    return {
+      swiperModules: [Navigation, Pagination, Scrollbar, EffectCube, Keyboard, Autoplay],
 
-/* Swiper 事件 */
-// 一開始就會觸發
-const onSwiper = (swiper) => {
-  console.log(`onSwiper ==>`, swiper);
-};
-// 切換 slide 時觸發
-const onSlideChange = () => {
-  console.log('slide change');
-};
-// 切換到最後一個 slide 時觸發，會在 onSlideChange 之前觸發
-const onReachEnd = () => {
-  console.log('reach end');
-};
+      /* 操作 Progress bar */
+      progressBarStyle: {
+        isDown: false,
+        isBigger: false,
+        isChangeColor: false,
+      },
 
-/**
- * Progress bar 操作：
- * 若一開始即為 true，不知為何 class 會被加入兩次，以至於之後的操作會無法移除多餘的 class，因此初始值必須為 false。
- * 若希望預設為 true，可以改寫成在 mounted 階段時改變其值。
- */
-const progressBarStyle = reactive({
-  isDown: false,
-  isBigger: false,
-  isChangeColor: false,
-});
-onMounted(() => {
-  console.log(`onMounted...`);
-  progressBarStyle.isDown = true;
-  progressBarStyle.isBigger = true;
-  progressBarStyle.isChangeColor = true;
-});
+      /* 分頁 - 自訂 */
+      paginationCustom: {
+        clickable: true,
+        renderBullet: function (index, className) {
+          return (
+            '<span class="swiper-pagination-custom ' + className + '">' + (index + 1) + '</span>'
+          );
+        },
+      },
 
-/**
- * 分頁 - 自訂
- */
-const paginationCustom = {
-  clickable: true,
-  renderBullet: function (index, className) {
-    return '<span class="swiper-pagination-custom ' + className + '">' + (index + 1) + '</span>';
+      /* 自動播放 */
+      autoplay: {
+        delay: 2500,
+        // 當對輪播進行操作時，會中斷自動播放
+        disableOnInteraction: true,
+      },
+
+      /* 測試 Swiper 實例 - 測試 2 */
+      refSwiper2: null,
+    };
+  },
+  // data end
+
+  mounted() {
+    console.log(`mounted...`);
+    console.log(`refSwiper1 ==>`, this.$refs.refSwiper1);
+
+    // 操作 Progress bar
+    this.progressBarStyle.isDown = true;
+    this.progressBarStyle.isBigger = true;
+    this.progressBarStyle.isChangeColor = true;
+  },
+
+  methods: {
+    /* 官網範例 */
+    // 一開始就會觸發
+    onSwiper(swiper) {
+      console.log(`onSwiper ==>`, swiper);
+    },
+    // 切換 slide 時觸發
+    onSlideChange() {
+      console.log('slide change');
+    },
+    // 切換到最後一個 slide 時觸發，會在 onSlideChange 之前觸發
+    onReachEnd() {
+      console.log('reach end');
+    },
+
+    /* 自動播放 */
+    onAutoplayTimeLeft(s, time, progress) {
+      this.$refs.progressCircle.style.setProperty('--progress', 1 - progress);
+      this.$refs.progressContent.textContent = `${Math.ceil(time / 1000)}s`;
+    },
+
+    /**
+     * 測試 Swiper 實例 - 測試 1
+     * 直接使用 vue 的模板引用方式（template-refs）綁定 Swiper 元件。
+     * 此做法得到的 Swiper 實例不太一樣，無法操作，console 會出現錯誤。
+     */
+    toPrev1() {
+      // Error: refSwiper1.value.slidePrev is not a function
+      this.$refs.refSwiper1.slidePrev();
+    },
+    toNext1() {
+      // Error: refSwiper1.value.slideNext is not a function
+      this.$refs.refSwiper1.slideNext();
+    },
+
+    /**
+     * 測試 Swiper 實例 - 測試 2
+     * 使用官網的做法，在 @swiper 事件綁定 Swiper 實例，此做法可以操作。
+     */
+    setRefSwiper2(swiper) {
+      this.refSwiper2 = swiper;
+      console.log(`refSwiper2 ==>`, this.refSwiper2);
+    },
+    toPrev2() {
+      this.refSwiper2.slidePrev();
+    },
+    toNext2() {
+      this.refSwiper2.slideNext();
+    },
+  },
+  // methods end
+
+  components: {
+    Swiper,
+    SwiperSlide,
   },
 };
-
-/**
- * 自動播放
- */
-const autoplay = {
-  delay: 2500,
-  // 當對輪播進行操作時，會中斷自動播放
-  disableOnInteraction: true,
-};
-const progressCircle = ref(null); // SVG 圓
-const progressContent = ref(null); // 倒數文字
-const onAutoplayTimeLeft = (s, time, progress) => {
-  progressCircle.value.style.setProperty('--progress', 1 - progress);
-  progressContent.value.textContent = `${Math.ceil(time / 1000)}s`;
-};
-
-/**
- * 測試 Swiper 實例 - 測試 1
- * 直接使用 vue 的模板引用方式（template-refs）綁定 Swiper 元件。
- * 此做法得到的 Swiper 實例不太一樣，無法操作，console 會出現錯誤。
- */
-const refSwiper1 = ref(null);
-onMounted(() => {
-  console.log(`refSwiper1 ==>`, refSwiper1.value);
-});
-function toPrev1() {
-  // Error: refSwiper1.value.slidePrev is not a function
-  refSwiper1.value.slidePrev();
-}
-function toNext1() {
-  // Error: refSwiper1.value.slideNext is not a function
-  refSwiper1.value.slideNext();
-}
-
-/**
- * 測試 Swiper 實例 - 測試 2
- * 使用官網的做法，在 @swiper 事件綁定 Swiper 實例，此做法可以操作。
- */
-const refSwiper2 = ref(null);
-const setRefSwiper2 = (swiper) => {
-  refSwiper2.value = swiper;
-  console.log(`refSwiper2 ==>`, refSwiper2.value);
-};
-function toPrev2() {
-  refSwiper2.value.slidePrev();
-}
-function toNext2() {
-  refSwiper2.value.slideNext();
-}
 </script>
 
-<!-- <style lang="scss" scoped src="@/assets/scss/mySwiper.scss"></style> -->
 <style lang="scss" scoped>
 @use '@/assets/scss/swiper/swiper-sample';
 @use '@/assets/scss/swiper/mySwiper';

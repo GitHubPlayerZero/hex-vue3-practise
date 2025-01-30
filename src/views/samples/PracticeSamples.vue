@@ -14,6 +14,7 @@
 		<RouterLink to="/samples/comtest1">元件共用模組</RouterLink>｜
 		<RouterLink to="/samples/state">手刻元件狀態管理</RouterLink>｜
 		<RouterLink to="/samples/event">測試事件觸發</RouterLink>｜
+		<RouterLink to="/samples/meta-url">meta 資料與 URL 測試</RouterLink>｜
 		<RouterLink to="/samples/pinia-sample">Pinia 練習範例</RouterLink>｜
 	</nav>
 

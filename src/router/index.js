@@ -71,6 +71,11 @@ const router = createRouter({
 					component: () => import('../views/samples/EventTest.vue'),
 				},
 				{
+					path: 'meta-url',
+					name: 'metaUrl',
+					component: () => import('../views/samples/MetaUrl.vue'),
+				},
+				{
 					path: 'pinia-sample',
 					name: 'piniaSample',
 					component: () => import('../views/samples/PiniaSample.vue'),

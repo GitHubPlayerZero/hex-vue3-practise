@@ -84,9 +84,20 @@
 }
 
 /* 垂直 */
-.demo-pagination-vertical :deep(.swiper-button-next) {
-  /* 避免 next 按鈕與 pagination 重疊 */
-  right: 60px;
+.demo-pagination-vertical {
+  :deep(.swiper-button-prev) {
+    font-weight: 900;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(40%) rotate(90deg);
+  }
+  :deep(.swiper-button-next) {
+    font-weight: 900;
+    top: auto;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(15%)rotate(90deg);
+  }
 }
 
 /* 自動播放倒計時樣式 */
